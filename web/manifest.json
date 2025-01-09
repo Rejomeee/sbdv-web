@@ -1,6 +1,6 @@
 {
-    "name": "fitness_dashboard_ui",
-    "short_name": "fitness_dashboard_ui",
+    "name": "sbdv_web",
+    "short_name": "sbdv_web",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

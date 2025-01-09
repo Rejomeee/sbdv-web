@@ -1,6 +1,9 @@
-import 'package:fitness_dashboard_ui/const/constant.dart';
-import 'package:fitness_dashboard_ui/screens/main_screen.dart';
+import 'screens/login/cubit/login/login_cubit.dart';
+
+import 'const/constant.dart';
 import 'package:flutter/material.dart';
+import 'screens/login/login_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,14 +14,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Dashborad UI',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: backgroundColor,
-        brightness: Brightness.dark,
+    return MultiProvider(
+      providers: [
+        Provider<LoginCubit>(create: (_) => LoginCubit()),
+      ],
+      child: MaterialApp(
+        title: 'Dashborad UIxx',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          scaffoldBackgroundColor: backgroundColor,
+          brightness: Brightness.dark,
+        ),
+        home: const LoginScreen(),
+        // home: const MainScreen(),
       ),
-      home: const MainScreen(),
     );
   }
 }
