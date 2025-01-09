@@ -1,11 +1,14 @@
+import 'di/injection.dart';
 import 'screens/login/cubit/login/login_cubit.dart';
+import 'package:flutter/material.dart';
+import 'network/dio_instance.dart';
 
 import 'const/constant.dart';
-import 'package:flutter/material.dart';
 import 'screens/login/login_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  initDependencyInjection();
   runApp(const MyApp());
 }
 
@@ -16,7 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<LoginCubit>(create: (_) => LoginCubit()),
+        Provider<LoginCubit>(
+          create: (_) => serviceLocator<LoginCubit>(),
+        ),
       ],
       child: MaterialApp(
         title: 'Dashborad UIxx',
