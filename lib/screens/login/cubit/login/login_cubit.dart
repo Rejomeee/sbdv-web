@@ -16,12 +16,14 @@ class LoginCubit extends Cubit<LoginState> {
 
   void login(String username, String password) async {
     // Simulate a login process
-    final success = await _authenticationRepository.login(username, password);
-    if (success) {
+    print('arone');
+    final result = await _authenticationRepository.login(username, password);
+    print(result);
+    result.when(success: (success) {
       emit(LoginSuccess());
-    } else {
+    }, failure: (failure) {
       errorMessage = 'Invalid username or password';
-      emit(LoginFailure(error: errorMessage));
-    }
+      emit(LoginFailure(error: failure.errorMessage));
+    });
   }
 }

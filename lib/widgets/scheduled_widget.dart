@@ -33,16 +33,12 @@ class Scheduled extends StatelessWidget {
                         children: [
                           Text(
                             data.scheduled[index].title,
-                            style: const TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.w500),
+                            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(height: 2),
                           Text(
                             data.scheduled[index].date,
-                            style: const TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w500),
+                            style: const TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),

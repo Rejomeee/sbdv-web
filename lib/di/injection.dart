@@ -8,6 +8,6 @@ final GetIt serviceLocator = GetIt.instance;
 
 ///Configures [GetIt] to setup all dependencies as needed.
 @injectableInit
-void initDependencyInjection() {
-  serviceLocator.init();
+void initDependencyInjection(String env) {
+  serviceLocator.init(environment: env);
 }

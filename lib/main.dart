@@ -1,14 +1,15 @@
+import 'package:injectable/injectable.dart';
+
 import 'di/injection.dart';
 import 'screens/login/cubit/login/login_cubit.dart';
 import 'package:flutter/material.dart';
-import 'network/dio_instance.dart';
 
 import 'const/constant.dart';
 import 'screens/login/login_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  initDependencyInjection();
+  initDependencyInjection(Environment.prod);
   runApp(const MyApp());
 }
 

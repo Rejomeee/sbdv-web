@@ -42,10 +42,8 @@ class LineChartCard extends StatelessWidget {
                         return data.bottomTitle[value.toInt()] != null
                             ? SideTitleWidget(
                                 axisSide: meta.axisSide,
-                                child: Text(
-                                    data.bottomTitle[value.toInt()].toString(),
-                                    style: TextStyle(
-                                        fontSize: 12, color: Colors.grey[400])),
+                                child: Text(data.bottomTitle[value.toInt()].toString(),
+                                    style: TextStyle(fontSize: 12, color: Colors.grey[400])),
                               )
                             : const SizedBox();
                       },
@@ -56,8 +54,7 @@ class LineChartCard extends StatelessWidget {
                       getTitlesWidget: (double value, TitleMeta meta) {
                         return data.leftTitle[value.toInt()] != null
                             ? Text(data.leftTitle[value.toInt()].toString(),
-                                style: TextStyle(
-                                    fontSize: 12, color: Colors.grey[400]))
+                                style: TextStyle(fontSize: 12, color: Colors.grey[400]))
                             : const SizedBox();
                       },
                       showTitles: true,
@@ -75,10 +72,7 @@ class LineChartCard extends StatelessWidget {
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [
-                          selectionColor.withOpacity(0.5),
-                          Colors.transparent
-                        ],
+                        colors: [selectionColor.withOpacity(0.5), Colors.transparent],
                       ),
                       show: true,
                     ),

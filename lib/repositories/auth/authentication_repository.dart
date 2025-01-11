@@ -1,5 +1,8 @@
 import 'package:injectable/injectable.dart';
+import 'package:sbdv_web/repositories/auth/model/auth_token_model.dart';
 
+import '../../network/rest_client_catcher.dart';
+import '../../network/result.dart';
 import 'authentication_rest_client.dart';
 
 @LazySingleton()
@@ -8,14 +11,16 @@ class AuthenticationRepository {
 
   AuthenticationRepository(this._restClient);
 
-  Future<bool> login(String username, String password) async {
-    try {
-      // Simulate a network call
-      _restClient.loginRegister({'username': username, 'password': password});
-      await Future.delayed(Duration(seconds: 2));
-      return username == 'admin' && password == 'admin';
-    } catch (error) {
-      return false;
-    }
+  Future<Result<AuthTokenModel>> login(String username, String password) async {
+    final result = await RestClientCatcher.request<AuthTokenModel>(
+      onRequest: () async {
+        final AuthTokenModel authTokenModel;
+        authTokenModel = await _restClient.loginRegister({'username': username, 'password': password});
+        print('arone login authTokenModel $authTokenModel');
+        return Result.success(authTokenModel);
+      },
+    );
+    print('arone login result ${result.failure}');
+    return result;
   }
 }

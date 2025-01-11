@@ -56,10 +56,7 @@ class BarGraphCard extends StatelessWidget {
                               padding: const EdgeInsets.only(top: 5),
                               child: Text(
                                 barGraphData.label[value.toInt()],
-                                style: const TextStyle(
-                                    fontSize: 11,
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w500),
+                                style: const TextStyle(fontSize: 11, color: Colors.grey, fontWeight: FontWeight.w500),
                               ),
                             );
                           },
@@ -85,8 +82,7 @@ class BarGraphCard extends StatelessWidget {
     );
   }
 
-  List<BarChartGroupData> _chartGroups(
-      {required List<GraphModel> points, required Color color}) {
+  List<BarChartGroupData> _chartGroups({required List<GraphModel> points, required Color color}) {
     return points
         .map((point) => BarChartGroupData(x: point.x.toInt(), barRods: [
               BarChartRodData(

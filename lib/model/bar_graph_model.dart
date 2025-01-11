@@ -6,6 +6,5 @@ class BarGraphModel {
   final Color color;
   final List<GraphModel> graph;
 
-  const BarGraphModel(
-      {required this.label, required this.color, required this.graph});
+  const BarGraphModel({required this.label, required this.color, required this.graph});
 }

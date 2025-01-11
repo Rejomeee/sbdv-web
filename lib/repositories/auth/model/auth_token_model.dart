@@ -14,7 +14,6 @@ class AuthTokenModel {
     this.error,
   });
 
-  factory AuthTokenModel.fromJson(Map<String, dynamic> json) =>
-      _$AuthTokenModelFromJson(json);
+  factory AuthTokenModel.fromJson(Map<String, dynamic> json) => _$AuthTokenModelFromJson(json);
   Map<String, dynamic> toJson() => _$AuthTokenModelToJson(this);
 }

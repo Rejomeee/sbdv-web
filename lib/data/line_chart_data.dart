@@ -47,14 +47,7 @@ class LineData {
     FlSpot(118.52, 57.60),
   ];
 
-  final leftTitle = {
-    0: '0',
-    20: '2K',
-    40: '4K',
-    60: '6K',
-    80: '8K',
-    100: '10K'
-  };
+  final leftTitle = {0: '0', 20: '2K', 40: '4K', 60: '6K', 80: '8K', 100: '10K'};
   final bottomTitle = {
     0: 'Jan',
     10: 'Feb',

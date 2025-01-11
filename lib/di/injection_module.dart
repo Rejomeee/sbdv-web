@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-import '../network/dio_instance.dart';
+import '../network/dio_helper.dart';
 import '../repositories/auth/authentication_rest_client.dart';
 
 //* External packages that need to be used as dependencies for classes should be placed in here
@@ -16,6 +16,5 @@ abstract class ExternalPackageDependencies {
   //* Rest Clients
 
   @LazySingleton(env: [Environment.prod])
-  AuthenticationRestClient get authenticationRestClient =>
-      AuthenticationRestClient(dio);
+  AuthenticationRestClient get authenticationRestClient => AuthenticationRestClient(dio);
 }
