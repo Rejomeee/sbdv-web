@@ -12,7 +12,7 @@ part of 'error_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
   return _ErrorResponse.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$ErrorResponse {
   String? get status => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
 
+  /// Serializes this ErrorResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ErrorResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ErrorResponseCopyWith<ErrorResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ErrorResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,24 +86,26 @@ class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
 }
 
 /// @nodoc
-abstract class _$$_ErrorResponseCopyWith<$Res>
+abstract class _$$ErrorResponseImplCopyWith<$Res>
     implements $ErrorResponseCopyWith<$Res> {
-  factory _$$_ErrorResponseCopyWith(
-          _$_ErrorResponse value, $Res Function(_$_ErrorResponse) then) =
-      __$$_ErrorResponseCopyWithImpl<$Res>;
+  factory _$$ErrorResponseImplCopyWith(
+          _$ErrorResponseImpl value, $Res Function(_$ErrorResponseImpl) then) =
+      __$$ErrorResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({dynamic code, String? reason, String? status, String? message});
 }
 
 /// @nodoc
-class __$$_ErrorResponseCopyWithImpl<$Res>
-    extends _$ErrorResponseCopyWithImpl<$Res, _$_ErrorResponse>
-    implements _$$_ErrorResponseCopyWith<$Res> {
-  __$$_ErrorResponseCopyWithImpl(
-      _$_ErrorResponse _value, $Res Function(_$_ErrorResponse) _then)
+class __$$ErrorResponseImplCopyWithImpl<$Res>
+    extends _$ErrorResponseCopyWithImpl<$Res, _$ErrorResponseImpl>
+    implements _$$ErrorResponseImplCopyWith<$Res> {
+  __$$ErrorResponseImplCopyWithImpl(
+      _$ErrorResponseImpl _value, $Res Function(_$ErrorResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ErrorResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,7 +114,7 @@ class __$$_ErrorResponseCopyWithImpl<$Res>
     Object? status = freezed,
     Object? message = freezed,
   }) {
-    return _then(_$_ErrorResponse(
+    return _then(_$ErrorResponseImpl(
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -129,12 +137,12 @@ class __$$_ErrorResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ErrorResponse extends _ErrorResponse {
-  const _$_ErrorResponse({this.code, this.reason, this.status, this.message})
+class _$ErrorResponseImpl extends _ErrorResponse {
+  const _$ErrorResponseImpl({this.code, this.reason, this.status, this.message})
       : super._();
 
-  factory _$_ErrorResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_ErrorResponseFromJson(json);
+  factory _$ErrorResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ErrorResponseImplFromJson(json);
 
   @override
   final dynamic code;
@@ -151,30 +159,32 @@ class _$_ErrorResponse extends _ErrorResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorResponse &&
+            other is _$ErrorResponseImpl &&
             const DeepCollectionEquality().equals(other.code, code) &&
             (identical(other.reason, reason) || other.reason == reason) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(code), reason, status, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ErrorResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorResponseCopyWith<_$_ErrorResponse> get copyWith =>
-      __$$_ErrorResponseCopyWithImpl<_$_ErrorResponse>(this, _$identity);
+  _$$ErrorResponseImplCopyWith<_$ErrorResponseImpl> get copyWith =>
+      __$$ErrorResponseImplCopyWithImpl<_$ErrorResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ErrorResponseToJson(
+    return _$$ErrorResponseImplToJson(
       this,
     );
   }
@@ -185,11 +195,11 @@ abstract class _ErrorResponse extends ErrorResponse {
       {final dynamic code,
       final String? reason,
       final String? status,
-      final String? message}) = _$_ErrorResponse;
+      final String? message}) = _$ErrorResponseImpl;
   const _ErrorResponse._() : super._();
 
   factory _ErrorResponse.fromJson(Map<String, dynamic> json) =
-      _$_ErrorResponse.fromJson;
+      _$ErrorResponseImpl.fromJson;
 
   @override
   dynamic get code;
@@ -199,8 +209,11 @@ abstract class _ErrorResponse extends ErrorResponse {
   String? get status;
   @override
   String? get message;
+
+  /// Create a copy of ErrorResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_ErrorResponseCopyWith<_$_ErrorResponse> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ErrorResponseImplCopyWith<_$ErrorResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -16,11 +16,29 @@ class AuthenticationRepository {
       onRequest: () async {
         final AuthTokenModel authTokenModel;
         authTokenModel = await _restClient.loginRegister({'username': username, 'password': password});
-        print('arone login authTokenModel $authTokenModel');
         return Result.success(authTokenModel);
       },
     );
-    print('arone login result ${result.failure}');
+    return result;
+  }
+
+  Future<Result<AuthTokenModel>> checkAuth() async {
+    final result = await RestClientCatcher.request<AuthTokenModel>(
+      onRequest: () async {
+        final AuthTokenModel authTokenModel;
+        authTokenModel = await _restClient.checkAuth();
+        return Result.success(authTokenModel);
+      },
+    );
+    return result;
+  }
+
+  Future<Result<void>> logout() async {
+    final result = await RestClientCatcher.request<void>(
+      onRequest: () async {
+        return Result.success(null);
+      },
+    );
     return result;
   }
 }

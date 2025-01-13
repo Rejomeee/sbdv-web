@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sbdv_web/util/responsive.dart';
 import 'package:sbdv_web/widgets/activity_details_card.dart';
 import 'package:sbdv_web/widgets/bar_graph_widget.dart';

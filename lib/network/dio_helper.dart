@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import 'error_interceptor.dart';
+import 'header_interceptor.dart';
 
 class DioHelper {
   DioHelper._();
@@ -14,7 +15,8 @@ class DioHelper {
       ),
     );
 
-    dio.interceptors.add(ErrorInterceptor(dio));
+    dio.interceptors.add(HeaderInterceptor());
+    dio.interceptors.add(ErrorInterceptor());
 
     return dio;
   }

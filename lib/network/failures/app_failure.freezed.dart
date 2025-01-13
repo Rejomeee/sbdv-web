@@ -12,7 +12,7 @@ part of 'app_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppFailure {
@@ -72,13 +72,16 @@ class _$AppFailureCopyWithImpl<$Res, $Val extends AppFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AppFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_NetworkFailureCopyWith<$Res> {
-  factory _$$_NetworkFailureCopyWith(
-          _$_NetworkFailure value, $Res Function(_$_NetworkFailure) then) =
-      __$$_NetworkFailureCopyWithImpl<$Res>;
+abstract class _$$NetworkFailureImplCopyWith<$Res> {
+  factory _$$NetworkFailureImplCopyWith(_$NetworkFailureImpl value,
+          $Res Function(_$NetworkFailureImpl) then) =
+      __$$NetworkFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({NetworkFailure networkFailure});
 
@@ -86,19 +89,21 @@ abstract class _$$_NetworkFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_NetworkFailureCopyWithImpl<$Res>
-    extends _$AppFailureCopyWithImpl<$Res, _$_NetworkFailure>
-    implements _$$_NetworkFailureCopyWith<$Res> {
-  __$$_NetworkFailureCopyWithImpl(
-      _$_NetworkFailure _value, $Res Function(_$_NetworkFailure) _then)
+class __$$NetworkFailureImplCopyWithImpl<$Res>
+    extends _$AppFailureCopyWithImpl<$Res, _$NetworkFailureImpl>
+    implements _$$NetworkFailureImplCopyWith<$Res> {
+  __$$NetworkFailureImplCopyWithImpl(
+      _$NetworkFailureImpl _value, $Res Function(_$NetworkFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? networkFailure = null,
   }) {
-    return _then(_$_NetworkFailure(
+    return _then(_$NetworkFailureImpl(
       null == networkFailure
           ? _value.networkFailure
           : networkFailure // ignore: cast_nullable_to_non_nullable
@@ -106,6 +111,8 @@ class __$$_NetworkFailureCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AppFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NetworkFailureCopyWith<$Res> get networkFailure {
@@ -117,8 +124,8 @@ class __$$_NetworkFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NetworkFailure extends _NetworkFailure {
-  const _$_NetworkFailure(this.networkFailure) : super._();
+class _$NetworkFailureImpl extends _NetworkFailure {
+  const _$NetworkFailureImpl(this.networkFailure) : super._();
 
   @override
   final NetworkFailure networkFailure;
@@ -129,10 +136,10 @@ class _$_NetworkFailure extends _NetworkFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NetworkFailure &&
+            other is _$NetworkFailureImpl &&
             (identical(other.networkFailure, networkFailure) ||
                 other.networkFailure == networkFailure));
   }
@@ -140,11 +147,14 @@ class _$_NetworkFailure extends _NetworkFailure {
   @override
   int get hashCode => Object.hash(runtimeType, networkFailure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NetworkFailureCopyWith<_$_NetworkFailure> get copyWith =>
-      __$$_NetworkFailureCopyWithImpl<_$_NetworkFailure>(this, _$identity);
+  _$$NetworkFailureImplCopyWith<_$NetworkFailureImpl> get copyWith =>
+      __$$NetworkFailureImplCopyWithImpl<_$NetworkFailureImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -211,20 +221,23 @@ class _$_NetworkFailure extends _NetworkFailure {
 
 abstract class _NetworkFailure extends AppFailure {
   const factory _NetworkFailure(final NetworkFailure networkFailure) =
-      _$_NetworkFailure;
+      _$NetworkFailureImpl;
   const _NetworkFailure._() : super._();
 
   NetworkFailure get networkFailure;
-  @JsonKey(ignore: true)
-  _$$_NetworkFailureCopyWith<_$_NetworkFailure> get copyWith =>
+
+  /// Create a copy of AppFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NetworkFailureImplCopyWith<_$NetworkFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SdkFailureCopyWith<$Res> {
-  factory _$$_SdkFailureCopyWith(
-          _$_SdkFailure value, $Res Function(_$_SdkFailure) then) =
-      __$$_SdkFailureCopyWithImpl<$Res>;
+abstract class _$$SdkFailureImplCopyWith<$Res> {
+  factory _$$SdkFailureImplCopyWith(
+          _$SdkFailureImpl value, $Res Function(_$SdkFailureImpl) then) =
+      __$$SdkFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SdkFailure sdkFailure});
 
@@ -232,19 +245,21 @@ abstract class _$$_SdkFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SdkFailureCopyWithImpl<$Res>
-    extends _$AppFailureCopyWithImpl<$Res, _$_SdkFailure>
-    implements _$$_SdkFailureCopyWith<$Res> {
-  __$$_SdkFailureCopyWithImpl(
-      _$_SdkFailure _value, $Res Function(_$_SdkFailure) _then)
+class __$$SdkFailureImplCopyWithImpl<$Res>
+    extends _$AppFailureCopyWithImpl<$Res, _$SdkFailureImpl>
+    implements _$$SdkFailureImplCopyWith<$Res> {
+  __$$SdkFailureImplCopyWithImpl(
+      _$SdkFailureImpl _value, $Res Function(_$SdkFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? sdkFailure = null,
   }) {
-    return _then(_$_SdkFailure(
+    return _then(_$SdkFailureImpl(
       null == sdkFailure
           ? _value.sdkFailure
           : sdkFailure // ignore: cast_nullable_to_non_nullable
@@ -252,6 +267,8 @@ class __$$_SdkFailureCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AppFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SdkFailureCopyWith<$Res> get sdkFailure {
@@ -263,8 +280,8 @@ class __$$_SdkFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SdkFailure extends _SdkFailure {
-  const _$_SdkFailure(this.sdkFailure) : super._();
+class _$SdkFailureImpl extends _SdkFailure {
+  const _$SdkFailureImpl(this.sdkFailure) : super._();
 
   @override
   final SdkFailure sdkFailure;
@@ -275,10 +292,10 @@ class _$_SdkFailure extends _SdkFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SdkFailure &&
+            other is _$SdkFailureImpl &&
             (identical(other.sdkFailure, sdkFailure) ||
                 other.sdkFailure == sdkFailure));
   }
@@ -286,11 +303,13 @@ class _$_SdkFailure extends _SdkFailure {
   @override
   int get hashCode => Object.hash(runtimeType, sdkFailure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SdkFailureCopyWith<_$_SdkFailure> get copyWith =>
-      __$$_SdkFailureCopyWithImpl<_$_SdkFailure>(this, _$identity);
+  _$$SdkFailureImplCopyWith<_$SdkFailureImpl> get copyWith =>
+      __$$SdkFailureImplCopyWithImpl<_$SdkFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -356,11 +375,14 @@ class _$_SdkFailure extends _SdkFailure {
 }
 
 abstract class _SdkFailure extends AppFailure {
-  const factory _SdkFailure(final SdkFailure sdkFailure) = _$_SdkFailure;
+  const factory _SdkFailure(final SdkFailure sdkFailure) = _$SdkFailureImpl;
   const _SdkFailure._() : super._();
 
   SdkFailure get sdkFailure;
-  @JsonKey(ignore: true)
-  _$$_SdkFailureCopyWith<_$_SdkFailure> get copyWith =>
+
+  /// Create a copy of AppFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SdkFailureImplCopyWith<_$SdkFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

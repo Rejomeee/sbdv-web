@@ -16,4 +16,7 @@ abstract class AuthenticationRestClient {
 
   @POST(Endpoints.login)
   Future<AuthTokenModel> loginRegister(@Body() Map<String, dynamic> body);
+
+  @GET(Endpoints.checkAuth)
+  Future<AuthTokenModel> checkAuth();
 }

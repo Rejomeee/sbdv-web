@@ -12,7 +12,7 @@ part of 'app_exception.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppException {
@@ -66,28 +66,34 @@ class _$AppExceptionCopyWithImpl<$Res, $Val extends AppException>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_TimeoutExceptionCopyWith<$Res> {
-  factory _$$_TimeoutExceptionCopyWith(
-          _$_TimeoutException value, $Res Function(_$_TimeoutException) then) =
-      __$$_TimeoutExceptionCopyWithImpl<$Res>;
+abstract class _$$TimeoutExceptionImplCopyWith<$Res> {
+  factory _$$TimeoutExceptionImplCopyWith(_$TimeoutExceptionImpl value,
+          $Res Function(_$TimeoutExceptionImpl) then) =
+      __$$TimeoutExceptionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_TimeoutExceptionCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$_TimeoutException>
-    implements _$$_TimeoutExceptionCopyWith<$Res> {
-  __$$_TimeoutExceptionCopyWithImpl(
-      _$_TimeoutException _value, $Res Function(_$_TimeoutException) _then)
+class __$$TimeoutExceptionImplCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$TimeoutExceptionImpl>
+    implements _$$TimeoutExceptionImplCopyWith<$Res> {
+  __$$TimeoutExceptionImplCopyWithImpl(_$TimeoutExceptionImpl _value,
+      $Res Function(_$TimeoutExceptionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_TimeoutException implements _TimeoutException {
-  const _$_TimeoutException();
+class _$TimeoutExceptionImpl implements _TimeoutException {
+  const _$TimeoutExceptionImpl();
 
   @override
   String toString() {
@@ -95,9 +101,9 @@ class _$_TimeoutException implements _TimeoutException {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TimeoutException);
+        (other.runtimeType == runtimeType && other is _$TimeoutExceptionImpl);
   }
 
   @override
@@ -161,5 +167,5 @@ class _$_TimeoutException implements _TimeoutException {
 }
 
 abstract class _TimeoutException implements AppException {
-  const factory _TimeoutException() = _$_TimeoutException;
+  const factory _TimeoutException() = _$TimeoutExceptionImpl;
 }

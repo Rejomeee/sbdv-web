@@ -12,7 +12,7 @@ part of 'sdk_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SdkFailure {
@@ -86,32 +86,37 @@ class _$SdkFailureCopyWithImpl<$Res, $Val extends SdkFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_RuntimeErrorCopyWith<$Res> {
-  factory _$$_RuntimeErrorCopyWith(
-          _$_RuntimeError value, $Res Function(_$_RuntimeError) then) =
-      __$$_RuntimeErrorCopyWithImpl<$Res>;
+abstract class _$$RuntimeErrorImplCopyWith<$Res> {
+  factory _$$RuntimeErrorImplCopyWith(
+          _$RuntimeErrorImpl value, $Res Function(_$RuntimeErrorImpl) then) =
+      __$$RuntimeErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Exception exception, StackTrace? stacktrace});
 }
 
 /// @nodoc
-class __$$_RuntimeErrorCopyWithImpl<$Res>
-    extends _$SdkFailureCopyWithImpl<$Res, _$_RuntimeError>
-    implements _$$_RuntimeErrorCopyWith<$Res> {
-  __$$_RuntimeErrorCopyWithImpl(
-      _$_RuntimeError _value, $Res Function(_$_RuntimeError) _then)
+class __$$RuntimeErrorImplCopyWithImpl<$Res>
+    extends _$SdkFailureCopyWithImpl<$Res, _$RuntimeErrorImpl>
+    implements _$$RuntimeErrorImplCopyWith<$Res> {
+  __$$RuntimeErrorImplCopyWithImpl(
+      _$RuntimeErrorImpl _value, $Res Function(_$RuntimeErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? exception = null,
     Object? stacktrace = freezed,
   }) {
-    return _then(_$_RuntimeError(
+    return _then(_$RuntimeErrorImpl(
       exception: null == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
@@ -126,8 +131,8 @@ class __$$_RuntimeErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RuntimeError extends _RuntimeError {
-  const _$_RuntimeError({required this.exception, required this.stacktrace})
+class _$RuntimeErrorImpl extends _RuntimeError {
+  const _$RuntimeErrorImpl({required this.exception, required this.stacktrace})
       : super._();
 
   @override
@@ -141,10 +146,10 @@ class _$_RuntimeError extends _RuntimeError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RuntimeError &&
+            other is _$RuntimeErrorImpl &&
             (identical(other.exception, exception) ||
                 other.exception == exception) &&
             (identical(other.stacktrace, stacktrace) ||
@@ -154,11 +159,13 @@ class _$_RuntimeError extends _RuntimeError {
   @override
   int get hashCode => Object.hash(runtimeType, exception, stacktrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RuntimeErrorCopyWith<_$_RuntimeError> get copyWith =>
-      __$$_RuntimeErrorCopyWithImpl<_$_RuntimeError>(this, _$identity);
+  _$$RuntimeErrorImplCopyWith<_$RuntimeErrorImpl> get copyWith =>
+      __$$RuntimeErrorImplCopyWithImpl<_$RuntimeErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -240,38 +247,44 @@ class _$_RuntimeError extends _RuntimeError {
 abstract class _RuntimeError extends SdkFailure {
   const factory _RuntimeError(
       {required final Exception exception,
-      required final StackTrace? stacktrace}) = _$_RuntimeError;
+      required final StackTrace? stacktrace}) = _$RuntimeErrorImpl;
   const _RuntimeError._() : super._();
 
   Exception get exception;
   StackTrace? get stacktrace;
-  @JsonKey(ignore: true)
-  _$$_RuntimeErrorCopyWith<_$_RuntimeError> get copyWith =>
+
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RuntimeErrorImplCopyWith<_$RuntimeErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GenericCopyWith<$Res> {
-  factory _$$_GenericCopyWith(
-          _$_Generic value, $Res Function(_$_Generic) then) =
-      __$$_GenericCopyWithImpl<$Res>;
+abstract class _$$GenericImplCopyWith<$Res> {
+  factory _$$GenericImplCopyWith(
+          _$GenericImpl value, $Res Function(_$GenericImpl) then) =
+      __$$GenericImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Exception exception});
 }
 
 /// @nodoc
-class __$$_GenericCopyWithImpl<$Res>
-    extends _$SdkFailureCopyWithImpl<$Res, _$_Generic>
-    implements _$$_GenericCopyWith<$Res> {
-  __$$_GenericCopyWithImpl(_$_Generic _value, $Res Function(_$_Generic) _then)
+class __$$GenericImplCopyWithImpl<$Res>
+    extends _$SdkFailureCopyWithImpl<$Res, _$GenericImpl>
+    implements _$$GenericImplCopyWith<$Res> {
+  __$$GenericImplCopyWithImpl(
+      _$GenericImpl _value, $Res Function(_$GenericImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? exception = null,
   }) {
-    return _then(_$_Generic(
+    return _then(_$GenericImpl(
       null == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
@@ -282,8 +295,8 @@ class __$$_GenericCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Generic extends _Generic {
-  const _$_Generic(this.exception) : super._();
+class _$GenericImpl extends _Generic {
+  const _$GenericImpl(this.exception) : super._();
 
   @override
   final Exception exception;
@@ -294,10 +307,10 @@ class _$_Generic extends _Generic {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Generic &&
+            other is _$GenericImpl &&
             (identical(other.exception, exception) ||
                 other.exception == exception));
   }
@@ -305,11 +318,13 @@ class _$_Generic extends _Generic {
   @override
   int get hashCode => Object.hash(runtimeType, exception);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GenericCopyWith<_$_Generic> get copyWith =>
-      __$$_GenericCopyWithImpl<_$_Generic>(this, _$identity);
+  _$$GenericImplCopyWith<_$GenericImpl> get copyWith =>
+      __$$GenericImplCopyWithImpl<_$GenericImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -389,38 +404,43 @@ class _$_Generic extends _Generic {
 }
 
 abstract class _Generic extends SdkFailure {
-  const factory _Generic(final Exception exception) = _$_Generic;
+  const factory _Generic(final Exception exception) = _$GenericImpl;
   const _Generic._() : super._();
 
   Exception get exception;
-  @JsonKey(ignore: true)
-  _$$_GenericCopyWith<_$_Generic> get copyWith =>
+
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GenericImplCopyWith<_$GenericImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GenericMessageCopyWith<$Res> {
-  factory _$$_GenericMessageCopyWith(
-          _$_GenericMessage value, $Res Function(_$_GenericMessage) then) =
-      __$$_GenericMessageCopyWithImpl<$Res>;
+abstract class _$$GenericMessageImplCopyWith<$Res> {
+  factory _$$GenericMessageImplCopyWith(_$GenericMessageImpl value,
+          $Res Function(_$GenericMessageImpl) then) =
+      __$$GenericMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_GenericMessageCopyWithImpl<$Res>
-    extends _$SdkFailureCopyWithImpl<$Res, _$_GenericMessage>
-    implements _$$_GenericMessageCopyWith<$Res> {
-  __$$_GenericMessageCopyWithImpl(
-      _$_GenericMessage _value, $Res Function(_$_GenericMessage) _then)
+class __$$GenericMessageImplCopyWithImpl<$Res>
+    extends _$SdkFailureCopyWithImpl<$Res, _$GenericMessageImpl>
+    implements _$$GenericMessageImplCopyWith<$Res> {
+  __$$GenericMessageImplCopyWithImpl(
+      _$GenericMessageImpl _value, $Res Function(_$GenericMessageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_GenericMessage(
+    return _then(_$GenericMessageImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -431,8 +451,8 @@ class __$$_GenericMessageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GenericMessage extends _GenericMessage {
-  const _$_GenericMessage(this.message) : super._();
+class _$GenericMessageImpl extends _GenericMessage {
+  const _$GenericMessageImpl(this.message) : super._();
 
   @override
   final String message;
@@ -443,21 +463,24 @@ class _$_GenericMessage extends _GenericMessage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GenericMessage &&
+            other is _$GenericMessageImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GenericMessageCopyWith<_$_GenericMessage> get copyWith =>
-      __$$_GenericMessageCopyWithImpl<_$_GenericMessage>(this, _$identity);
+  _$$GenericMessageImplCopyWith<_$GenericMessageImpl> get copyWith =>
+      __$$GenericMessageImplCopyWithImpl<_$GenericMessageImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -537,38 +560,43 @@ class _$_GenericMessage extends _GenericMessage {
 }
 
 abstract class _GenericMessage extends SdkFailure {
-  const factory _GenericMessage(final String message) = _$_GenericMessage;
+  const factory _GenericMessage(final String message) = _$GenericMessageImpl;
   const _GenericMessage._() : super._();
 
   String get message;
-  @JsonKey(ignore: true)
-  _$$_GenericMessageCopyWith<_$_GenericMessage> get copyWith =>
+
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GenericMessageImplCopyWith<_$GenericMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ConnectionTimeoutCopyWith<$Res> {
-  factory _$$_ConnectionTimeoutCopyWith(_$_ConnectionTimeout value,
-          $Res Function(_$_ConnectionTimeout) then) =
-      __$$_ConnectionTimeoutCopyWithImpl<$Res>;
+abstract class _$$ConnectionTimeoutImplCopyWith<$Res> {
+  factory _$$ConnectionTimeoutImplCopyWith(_$ConnectionTimeoutImpl value,
+          $Res Function(_$ConnectionTimeoutImpl) then) =
+      __$$ConnectionTimeoutImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_ConnectionTimeoutCopyWithImpl<$Res>
-    extends _$SdkFailureCopyWithImpl<$Res, _$_ConnectionTimeout>
-    implements _$$_ConnectionTimeoutCopyWith<$Res> {
-  __$$_ConnectionTimeoutCopyWithImpl(
-      _$_ConnectionTimeout _value, $Res Function(_$_ConnectionTimeout) _then)
+class __$$ConnectionTimeoutImplCopyWithImpl<$Res>
+    extends _$SdkFailureCopyWithImpl<$Res, _$ConnectionTimeoutImpl>
+    implements _$$ConnectionTimeoutImplCopyWith<$Res> {
+  __$$ConnectionTimeoutImplCopyWithImpl(_$ConnectionTimeoutImpl _value,
+      $Res Function(_$ConnectionTimeoutImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_ConnectionTimeout(
+    return _then(_$ConnectionTimeoutImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -579,8 +607,8 @@ class __$$_ConnectionTimeoutCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ConnectionTimeout extends _ConnectionTimeout {
-  const _$_ConnectionTimeout({this.message}) : super._();
+class _$ConnectionTimeoutImpl extends _ConnectionTimeout {
+  const _$ConnectionTimeoutImpl({this.message}) : super._();
 
   @override
   final String? message;
@@ -591,21 +619,23 @@ class _$_ConnectionTimeout extends _ConnectionTimeout {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConnectionTimeout &&
+            other is _$ConnectionTimeoutImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConnectionTimeoutCopyWith<_$_ConnectionTimeout> get copyWith =>
-      __$$_ConnectionTimeoutCopyWithImpl<_$_ConnectionTimeout>(
+  _$$ConnectionTimeoutImplCopyWith<_$ConnectionTimeoutImpl> get copyWith =>
+      __$$ConnectionTimeoutImplCopyWithImpl<_$ConnectionTimeoutImpl>(
           this, _$identity);
 
   @override
@@ -687,11 +717,14 @@ class _$_ConnectionTimeout extends _ConnectionTimeout {
 
 abstract class _ConnectionTimeout extends SdkFailure {
   const factory _ConnectionTimeout({final String? message}) =
-      _$_ConnectionTimeout;
+      _$ConnectionTimeoutImpl;
   const _ConnectionTimeout._() : super._();
 
   String? get message;
-  @JsonKey(ignore: true)
-  _$$_ConnectionTimeoutCopyWith<_$_ConnectionTimeout> get copyWith =>
+
+  /// Create a copy of SdkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ConnectionTimeoutImplCopyWith<_$ConnectionTimeoutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

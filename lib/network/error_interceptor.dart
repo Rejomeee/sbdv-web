@@ -10,9 +10,7 @@ import 'json_keys.dart';
 /// or remove api calls on sending messages
 
 class ErrorInterceptor extends Interceptor {
-  final Dio _dio;
-
-  ErrorInterceptor(this._dio);
+  ErrorInterceptor();
 
   late DioErrorModel dioError;
   ErrorInterceptorHandler get handler => dioError.handler;
@@ -50,9 +48,7 @@ class ErrorInterceptor extends Interceptor {
     if (dioError.hasResponseData) {
       final jsonResponse = dioError.jsonResponse;
       final errorResponse = ErrorResponse.fromJson(
-        jsonResponse.containsKey(JsonKeys.error)
-            ? jsonResponse[JsonKeys.error] as Map<String, dynamic>
-            : jsonResponse,
+        jsonResponse.containsKey(JsonKeys.error) ? jsonResponse[JsonKeys.error] as Map<String, dynamic> : jsonResponse,
       );
       switch (dioError.statusCode) {
         case 401:
@@ -107,27 +103,23 @@ class ErrorInterceptor extends Interceptor {
   }
 
   /// Handle expired session and access token errors
-  Future<void> handle401Response(
-      {required ErrorResponse errorResponseData}) async {
+  Future<void> handle401Response({required ErrorResponse errorResponseData}) async {
     _rejectRequest(
       failure: NetworkFailure.unauthorized(),
     );
   }
 
-  void handle404Response({required ErrorResponse errorResponseData}) =>
-      _rejectRequest(
+  void handle404Response({required ErrorResponse errorResponseData}) => _rejectRequest(
         failure: NetworkFailure.notFound(
           message: errorResponseData.reason ?? '${dioError.message}',
         ),
       );
 
-  void handle406Response({required ErrorResponse errorResponseData}) =>
-      _rejectRequest(
+  void handle406Response({required ErrorResponse errorResponseData}) => _rejectRequest(
         failure: const NetworkFailure.notAcceptable(),
       );
 
-  void handle500Response({required ErrorResponse errorResponseData}) =>
-      _rejectRequest(
+  void handle500Response({required ErrorResponse errorResponseData}) => _rejectRequest(
         failure: NetworkFailure.serverError(
           message: errorResponseData.reason ?? '${dioError.message}',
         ),

@@ -41,7 +41,7 @@ class LineChartCard extends StatelessWidget {
                       getTitlesWidget: (double value, TitleMeta meta) {
                         return data.bottomTitle[value.toInt()] != null
                             ? SideTitleWidget(
-                                axisSide: meta.axisSide,
+                                meta: meta,
                                 child: Text(data.bottomTitle[value.toInt()].toString(),
                                     style: TextStyle(fontSize: 12, color: Colors.grey[400])),
                               )

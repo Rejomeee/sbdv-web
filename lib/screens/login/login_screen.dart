@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:sbdv_web/di/injection.dart';
 
 import '../../util/responsive.dart';
-import '../main_screen.dart';
-import './cubit/login/login_cubit.dart';
+import 'cubit/auth/auth_cubit.dart';
 
+@RoutePage()
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -49,20 +51,16 @@ class _LoginScreenState extends State<LoginScreen> {
           Expanded(
             flex: 5,
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: Responsive.isMobile(context) ? 16 : 64),
-              child: BlocConsumer<LoginCubit, LoginState>(
+              padding: EdgeInsets.symmetric(horizontal: Responsive.isMobile(context) ? 16 : 64),
+              child: BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
-                  if (state is LoginSuccess) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MainScreen()),
-                    );
+                  if (state is AuthSuccess) {
+                    // context.router.replace(DashboardScreen());
                   }
                 },
                 builder: (context, state) {
                   String? errorMessage;
-                  if (state is LoginFailure) {
+                  if (state is AuthFailure) {
                     errorMessage = state.error;
                   }
                   return Center(
@@ -73,10 +71,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'Login',
-                              style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold),
+                            Text(
+                              'Login ${serviceLocator<AuthCubit>().isAuthenticated}',
+                              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 16),
                             if (errorMessage != null)
@@ -119,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ElevatedButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  context.read<LoginCubit>().login(
+                                  context.read<AuthCubit>().login(
                                         _usernameController.text,
                                         _passwordController.text,
                                       );

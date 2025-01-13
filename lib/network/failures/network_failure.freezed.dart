@@ -12,7 +12,7 @@ part of 'network_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$NetworkFailure {
@@ -138,28 +138,34 @@ class _$NetworkFailureCopyWithImpl<$Res, $Val extends NetworkFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_MaintenanceModeCopyWith<$Res> {
-  factory _$$_MaintenanceModeCopyWith(
-          _$_MaintenanceMode value, $Res Function(_$_MaintenanceMode) then) =
-      __$$_MaintenanceModeCopyWithImpl<$Res>;
+abstract class _$$MaintenanceModeImplCopyWith<$Res> {
+  factory _$$MaintenanceModeImplCopyWith(_$MaintenanceModeImpl value,
+          $Res Function(_$MaintenanceModeImpl) then) =
+      __$$MaintenanceModeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_MaintenanceModeCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_MaintenanceMode>
-    implements _$$_MaintenanceModeCopyWith<$Res> {
-  __$$_MaintenanceModeCopyWithImpl(
-      _$_MaintenanceMode _value, $Res Function(_$_MaintenanceMode) _then)
+class __$$MaintenanceModeImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$MaintenanceModeImpl>
+    implements _$$MaintenanceModeImplCopyWith<$Res> {
+  __$$MaintenanceModeImplCopyWithImpl(
+      _$MaintenanceModeImpl _value, $Res Function(_$MaintenanceModeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_MaintenanceMode extends _MaintenanceMode {
-  const _$_MaintenanceMode() : super._();
+class _$MaintenanceModeImpl extends _MaintenanceMode {
+  const _$MaintenanceModeImpl() : super._();
 
   @override
   String toString() {
@@ -167,9 +173,9 @@ class _$_MaintenanceMode extends _MaintenanceMode {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MaintenanceMode);
+        (other.runtimeType == runtimeType && other is _$MaintenanceModeImpl);
   }
 
   @override
@@ -305,30 +311,33 @@ class _$_MaintenanceMode extends _MaintenanceMode {
 }
 
 abstract class _MaintenanceMode extends NetworkFailure {
-  const factory _MaintenanceMode() = _$_MaintenanceMode;
+  const factory _MaintenanceMode() = _$MaintenanceModeImpl;
   const _MaintenanceMode._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_UnauthorizedCopyWith<$Res> {
-  factory _$$_UnauthorizedCopyWith(
-          _$_Unauthorized value, $Res Function(_$_Unauthorized) then) =
-      __$$_UnauthorizedCopyWithImpl<$Res>;
+abstract class _$$UnauthorizedImplCopyWith<$Res> {
+  factory _$$UnauthorizedImplCopyWith(
+          _$UnauthorizedImpl value, $Res Function(_$UnauthorizedImpl) then) =
+      __$$UnauthorizedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnauthorizedCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_Unauthorized>
-    implements _$$_UnauthorizedCopyWith<$Res> {
-  __$$_UnauthorizedCopyWithImpl(
-      _$_Unauthorized _value, $Res Function(_$_Unauthorized) _then)
+class __$$UnauthorizedImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$UnauthorizedImpl>
+    implements _$$UnauthorizedImplCopyWith<$Res> {
+  __$$UnauthorizedImplCopyWithImpl(
+      _$UnauthorizedImpl _value, $Res Function(_$UnauthorizedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Unauthorized extends _Unauthorized {
-  const _$_Unauthorized() : super._();
+class _$UnauthorizedImpl extends _Unauthorized {
+  const _$UnauthorizedImpl() : super._();
 
   @override
   String toString() {
@@ -336,9 +345,9 @@ class _$_Unauthorized extends _Unauthorized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unauthorized);
+        (other.runtimeType == runtimeType && other is _$UnauthorizedImpl);
   }
 
   @override
@@ -474,30 +483,33 @@ class _$_Unauthorized extends _Unauthorized {
 }
 
 abstract class _Unauthorized extends NetworkFailure {
-  const factory _Unauthorized() = _$_Unauthorized;
+  const factory _Unauthorized() = _$UnauthorizedImpl;
   const _Unauthorized._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_SessionTimedOutCopyWith<$Res> {
-  factory _$$_SessionTimedOutCopyWith(
-          _$_SessionTimedOut value, $Res Function(_$_SessionTimedOut) then) =
-      __$$_SessionTimedOutCopyWithImpl<$Res>;
+abstract class _$$SessionTimedOutImplCopyWith<$Res> {
+  factory _$$SessionTimedOutImplCopyWith(_$SessionTimedOutImpl value,
+          $Res Function(_$SessionTimedOutImpl) then) =
+      __$$SessionTimedOutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SessionTimedOutCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_SessionTimedOut>
-    implements _$$_SessionTimedOutCopyWith<$Res> {
-  __$$_SessionTimedOutCopyWithImpl(
-      _$_SessionTimedOut _value, $Res Function(_$_SessionTimedOut) _then)
+class __$$SessionTimedOutImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$SessionTimedOutImpl>
+    implements _$$SessionTimedOutImplCopyWith<$Res> {
+  __$$SessionTimedOutImplCopyWithImpl(
+      _$SessionTimedOutImpl _value, $Res Function(_$SessionTimedOutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_SessionTimedOut extends _SessionTimedOut {
-  const _$_SessionTimedOut() : super._();
+class _$SessionTimedOutImpl extends _SessionTimedOut {
+  const _$SessionTimedOutImpl() : super._();
 
   @override
   String toString() {
@@ -505,9 +517,9 @@ class _$_SessionTimedOut extends _SessionTimedOut {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SessionTimedOut);
+        (other.runtimeType == runtimeType && other is _$SessionTimedOutImpl);
   }
 
   @override
@@ -643,33 +655,35 @@ class _$_SessionTimedOut extends _SessionTimedOut {
 }
 
 abstract class _SessionTimedOut extends NetworkFailure {
-  const factory _SessionTimedOut() = _$_SessionTimedOut;
+  const factory _SessionTimedOut() = _$SessionTimedOutImpl;
   const _SessionTimedOut._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_NotFoundCopyWith<$Res> {
-  factory _$$_NotFoundCopyWith(
-          _$_NotFound value, $Res Function(_$_NotFound) then) =
-      __$$_NotFoundCopyWithImpl<$Res>;
+abstract class _$$NotFoundImplCopyWith<$Res> {
+  factory _$$NotFoundImplCopyWith(
+          _$NotFoundImpl value, $Res Function(_$NotFoundImpl) then) =
+      __$$NotFoundImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_NotFoundCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_NotFound>
-    implements _$$_NotFoundCopyWith<$Res> {
-  __$$_NotFoundCopyWithImpl(
-      _$_NotFound _value, $Res Function(_$_NotFound) _then)
+class __$$NotFoundImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$NotFoundImpl>
+    implements _$$NotFoundImplCopyWith<$Res> {
+  __$$NotFoundImplCopyWithImpl(
+      _$NotFoundImpl _value, $Res Function(_$NotFoundImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_NotFound(
+    return _then(_$NotFoundImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -680,8 +694,8 @@ class __$$_NotFoundCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NotFound extends _NotFound {
-  const _$_NotFound({required this.message}) : super._();
+class _$NotFoundImpl extends _NotFound {
+  const _$NotFoundImpl({required this.message}) : super._();
 
   @override
   final String message;
@@ -692,21 +706,23 @@ class _$_NotFound extends _NotFound {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NotFound &&
+            other is _$NotFoundImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NotFoundCopyWith<_$_NotFound> get copyWith =>
-      __$$_NotFoundCopyWithImpl<_$_NotFound>(this, _$identity);
+  _$$NotFoundImplCopyWith<_$NotFoundImpl> get copyWith =>
+      __$$NotFoundImplCopyWithImpl<_$NotFoundImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -838,38 +854,43 @@ class _$_NotFound extends _NotFound {
 }
 
 abstract class _NotFound extends NetworkFailure {
-  const factory _NotFound({required final String message}) = _$_NotFound;
+  const factory _NotFound({required final String message}) = _$NotFoundImpl;
   const _NotFound._() : super._();
 
   String get message;
-  @JsonKey(ignore: true)
-  _$$_NotFoundCopyWith<_$_NotFound> get copyWith =>
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NotFoundImplCopyWith<_$NotFoundImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ServerErrorCopyWith<$Res> {
-  factory _$$_ServerErrorCopyWith(
-          _$_ServerError value, $Res Function(_$_ServerError) then) =
-      __$$_ServerErrorCopyWithImpl<$Res>;
+abstract class _$$ServerErrorImplCopyWith<$Res> {
+  factory _$$ServerErrorImplCopyWith(
+          _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
+      __$$ServerErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_ServerErrorCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_ServerError>
-    implements _$$_ServerErrorCopyWith<$Res> {
-  __$$_ServerErrorCopyWithImpl(
-      _$_ServerError _value, $Res Function(_$_ServerError) _then)
+class __$$ServerErrorImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$ServerErrorImpl>
+    implements _$$ServerErrorImplCopyWith<$Res> {
+  __$$ServerErrorImplCopyWithImpl(
+      _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_ServerError(
+    return _then(_$ServerErrorImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -880,8 +901,8 @@ class __$$_ServerErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ServerError extends _ServerError {
-  const _$_ServerError({required this.message}) : super._();
+class _$ServerErrorImpl extends _ServerError {
+  const _$ServerErrorImpl({required this.message}) : super._();
 
   @override
   final String message;
@@ -892,21 +913,23 @@ class _$_ServerError extends _ServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ServerError &&
+            other is _$ServerErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ServerErrorCopyWith<_$_ServerError> get copyWith =>
-      __$$_ServerErrorCopyWithImpl<_$_ServerError>(this, _$identity);
+  _$$ServerErrorImplCopyWith<_$ServerErrorImpl> get copyWith =>
+      __$$ServerErrorImplCopyWithImpl<_$ServerErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1038,35 +1061,42 @@ class _$_ServerError extends _ServerError {
 }
 
 abstract class _ServerError extends NetworkFailure {
-  const factory _ServerError({required final String message}) = _$_ServerError;
+  const factory _ServerError({required final String message}) =
+      _$ServerErrorImpl;
   const _ServerError._() : super._();
 
   String get message;
-  @JsonKey(ignore: true)
-  _$$_ServerErrorCopyWith<_$_ServerError> get copyWith =>
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ServerErrorImplCopyWith<_$ServerErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_EmptyListCopyWith<$Res> {
-  factory _$$_EmptyListCopyWith(
-          _$_EmptyList value, $Res Function(_$_EmptyList) then) =
-      __$$_EmptyListCopyWithImpl<$Res>;
+abstract class _$$EmptyListImplCopyWith<$Res> {
+  factory _$$EmptyListImplCopyWith(
+          _$EmptyListImpl value, $Res Function(_$EmptyListImpl) then) =
+      __$$EmptyListImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EmptyListCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_EmptyList>
-    implements _$$_EmptyListCopyWith<$Res> {
-  __$$_EmptyListCopyWithImpl(
-      _$_EmptyList _value, $Res Function(_$_EmptyList) _then)
+class __$$EmptyListImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$EmptyListImpl>
+    implements _$$EmptyListImplCopyWith<$Res> {
+  __$$EmptyListImplCopyWithImpl(
+      _$EmptyListImpl _value, $Res Function(_$EmptyListImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_EmptyList extends _EmptyList {
-  const _$_EmptyList() : super._();
+class _$EmptyListImpl extends _EmptyList {
+  const _$EmptyListImpl() : super._();
 
   @override
   String toString() {
@@ -1074,9 +1104,9 @@ class _$_EmptyList extends _EmptyList {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EmptyList);
+        (other.runtimeType == runtimeType && other is _$EmptyListImpl);
   }
 
   @override
@@ -1212,30 +1242,33 @@ class _$_EmptyList extends _EmptyList {
 }
 
 abstract class _EmptyList extends NetworkFailure {
-  const factory _EmptyList() = _$_EmptyList;
+  const factory _EmptyList() = _$EmptyListImpl;
   const _EmptyList._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_NullResponseCopyWith<$Res> {
-  factory _$$_NullResponseCopyWith(
-          _$_NullResponse value, $Res Function(_$_NullResponse) then) =
-      __$$_NullResponseCopyWithImpl<$Res>;
+abstract class _$$NullResponseImplCopyWith<$Res> {
+  factory _$$NullResponseImplCopyWith(
+          _$NullResponseImpl value, $Res Function(_$NullResponseImpl) then) =
+      __$$NullResponseImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NullResponseCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_NullResponse>
-    implements _$$_NullResponseCopyWith<$Res> {
-  __$$_NullResponseCopyWithImpl(
-      _$_NullResponse _value, $Res Function(_$_NullResponse) _then)
+class __$$NullResponseImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$NullResponseImpl>
+    implements _$$NullResponseImplCopyWith<$Res> {
+  __$$NullResponseImplCopyWithImpl(
+      _$NullResponseImpl _value, $Res Function(_$NullResponseImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_NullResponse extends _NullResponse {
-  const _$_NullResponse() : super._();
+class _$NullResponseImpl extends _NullResponse {
+  const _$NullResponseImpl() : super._();
 
   @override
   String toString() {
@@ -1243,9 +1276,9 @@ class _$_NullResponse extends _NullResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NullResponse);
+        (other.runtimeType == runtimeType && other is _$NullResponseImpl);
   }
 
   @override
@@ -1381,30 +1414,33 @@ class _$_NullResponse extends _NullResponse {
 }
 
 abstract class _NullResponse extends NetworkFailure {
-  const factory _NullResponse() = _$_NullResponse;
+  const factory _NullResponse() = _$NullResponseImpl;
   const _NullResponse._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_ExpectedCopyWith<$Res> {
-  factory _$$_ExpectedCopyWith(
-          _$_Expected value, $Res Function(_$_Expected) then) =
-      __$$_ExpectedCopyWithImpl<$Res>;
+abstract class _$$ExpectedImplCopyWith<$Res> {
+  factory _$$ExpectedImplCopyWith(
+          _$ExpectedImpl value, $Res Function(_$ExpectedImpl) then) =
+      __$$ExpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ExpectedCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_Expected>
-    implements _$$_ExpectedCopyWith<$Res> {
-  __$$_ExpectedCopyWithImpl(
-      _$_Expected _value, $Res Function(_$_Expected) _then)
+class __$$ExpectedImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$ExpectedImpl>
+    implements _$$ExpectedImplCopyWith<$Res> {
+  __$$ExpectedImplCopyWithImpl(
+      _$ExpectedImpl _value, $Res Function(_$ExpectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Expected extends _Expected {
-  const _$_Expected() : super._();
+class _$ExpectedImpl extends _Expected {
+  const _$ExpectedImpl() : super._();
 
   @override
   String toString() {
@@ -1412,9 +1448,9 @@ class _$_Expected extends _Expected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Expected);
+        (other.runtimeType == runtimeType && other is _$ExpectedImpl);
   }
 
   @override
@@ -1550,33 +1586,35 @@ class _$_Expected extends _Expected {
 }
 
 abstract class _Expected extends NetworkFailure {
-  const factory _Expected() = _$_Expected;
+  const factory _Expected() = _$ExpectedImpl;
   const _Expected._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_Unexpected(
+    return _then(_$UnexpectedImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1587,8 +1625,8 @@ class __$$_UnexpectedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Unexpected extends _Unexpected {
-  const _$_Unexpected({required this.message}) : super._();
+class _$UnexpectedImpl extends _Unexpected {
+  const _$UnexpectedImpl({required this.message}) : super._();
 
   @override
   final String message;
@@ -1599,21 +1637,23 @@ class _$_Unexpected extends _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Unexpected &&
+            other is _$UnexpectedImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
-      __$$_UnexpectedCopyWithImpl<_$_Unexpected>(this, _$identity);
+  _$$UnexpectedImplCopyWith<_$UnexpectedImpl> get copyWith =>
+      __$$UnexpectedImplCopyWithImpl<_$UnexpectedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1745,35 +1785,41 @@ class _$_Unexpected extends _Unexpected {
 }
 
 abstract class _Unexpected extends NetworkFailure {
-  const factory _Unexpected({required final String message}) = _$_Unexpected;
+  const factory _Unexpected({required final String message}) = _$UnexpectedImpl;
   const _Unexpected._() : super._();
 
   String get message;
-  @JsonKey(ignore: true)
-  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UnexpectedImplCopyWith<_$UnexpectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ChannelNullCopyWith<$Res> {
-  factory _$$_ChannelNullCopyWith(
-          _$_ChannelNull value, $Res Function(_$_ChannelNull) then) =
-      __$$_ChannelNullCopyWithImpl<$Res>;
+abstract class _$$ChannelNullImplCopyWith<$Res> {
+  factory _$$ChannelNullImplCopyWith(
+          _$ChannelNullImpl value, $Res Function(_$ChannelNullImpl) then) =
+      __$$ChannelNullImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ChannelNullCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_ChannelNull>
-    implements _$$_ChannelNullCopyWith<$Res> {
-  __$$_ChannelNullCopyWithImpl(
-      _$_ChannelNull _value, $Res Function(_$_ChannelNull) _then)
+class __$$ChannelNullImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$ChannelNullImpl>
+    implements _$$ChannelNullImplCopyWith<$Res> {
+  __$$ChannelNullImplCopyWithImpl(
+      _$ChannelNullImpl _value, $Res Function(_$ChannelNullImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_ChannelNull extends _ChannelNull {
-  const _$_ChannelNull() : super._();
+class _$ChannelNullImpl extends _ChannelNull {
+  const _$ChannelNullImpl() : super._();
 
   @override
   String toString() {
@@ -1781,9 +1827,9 @@ class _$_ChannelNull extends _ChannelNull {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ChannelNull);
+        (other.runtimeType == runtimeType && other is _$ChannelNullImpl);
   }
 
   @override
@@ -1919,30 +1965,33 @@ class _$_ChannelNull extends _ChannelNull {
 }
 
 abstract class _ChannelNull extends NetworkFailure {
-  const factory _ChannelNull() = _$_ChannelNull;
+  const factory _ChannelNull() = _$ChannelNullImpl;
   const _ChannelNull._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_ConnectionTimeoutCopyWith<$Res> {
-  factory _$$_ConnectionTimeoutCopyWith(_$_ConnectionTimeout value,
-          $Res Function(_$_ConnectionTimeout) then) =
-      __$$_ConnectionTimeoutCopyWithImpl<$Res>;
+abstract class _$$ConnectionTimeoutImplCopyWith<$Res> {
+  factory _$$ConnectionTimeoutImplCopyWith(_$ConnectionTimeoutImpl value,
+          $Res Function(_$ConnectionTimeoutImpl) then) =
+      __$$ConnectionTimeoutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ConnectionTimeoutCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_ConnectionTimeout>
-    implements _$$_ConnectionTimeoutCopyWith<$Res> {
-  __$$_ConnectionTimeoutCopyWithImpl(
-      _$_ConnectionTimeout _value, $Res Function(_$_ConnectionTimeout) _then)
+class __$$ConnectionTimeoutImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$ConnectionTimeoutImpl>
+    implements _$$ConnectionTimeoutImplCopyWith<$Res> {
+  __$$ConnectionTimeoutImplCopyWithImpl(_$ConnectionTimeoutImpl _value,
+      $Res Function(_$ConnectionTimeoutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_ConnectionTimeout extends _ConnectionTimeout {
-  const _$_ConnectionTimeout() : super._();
+class _$ConnectionTimeoutImpl extends _ConnectionTimeout {
+  const _$ConnectionTimeoutImpl() : super._();
 
   @override
   String toString() {
@@ -1950,9 +1999,9 @@ class _$_ConnectionTimeout extends _ConnectionTimeout {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ConnectionTimeout);
+        (other.runtimeType == runtimeType && other is _$ConnectionTimeoutImpl);
   }
 
   @override
@@ -2088,33 +2137,35 @@ class _$_ConnectionTimeout extends _ConnectionTimeout {
 }
 
 abstract class _ConnectionTimeout extends NetworkFailure {
-  const factory _ConnectionTimeout() = _$_ConnectionTimeout;
+  const factory _ConnectionTimeout() = _$ConnectionTimeoutImpl;
   const _ConnectionTimeout._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_ReceiveTimeoutCopyWith<$Res> {
-  factory _$$_ReceiveTimeoutCopyWith(
-          _$_ReceiveTimeout value, $Res Function(_$_ReceiveTimeout) then) =
-      __$$_ReceiveTimeoutCopyWithImpl<$Res>;
+abstract class _$$ReceiveTimeoutImplCopyWith<$Res> {
+  factory _$$ReceiveTimeoutImplCopyWith(_$ReceiveTimeoutImpl value,
+          $Res Function(_$ReceiveTimeoutImpl) then) =
+      __$$ReceiveTimeoutImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_ReceiveTimeoutCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_ReceiveTimeout>
-    implements _$$_ReceiveTimeoutCopyWith<$Res> {
-  __$$_ReceiveTimeoutCopyWithImpl(
-      _$_ReceiveTimeout _value, $Res Function(_$_ReceiveTimeout) _then)
+class __$$ReceiveTimeoutImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$ReceiveTimeoutImpl>
+    implements _$$ReceiveTimeoutImplCopyWith<$Res> {
+  __$$ReceiveTimeoutImplCopyWithImpl(
+      _$ReceiveTimeoutImpl _value, $Res Function(_$ReceiveTimeoutImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_ReceiveTimeout(
+    return _then(_$ReceiveTimeoutImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -2125,8 +2176,8 @@ class __$$_ReceiveTimeoutCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ReceiveTimeout extends _ReceiveTimeout {
-  const _$_ReceiveTimeout({this.message}) : super._();
+class _$ReceiveTimeoutImpl extends _ReceiveTimeout {
+  const _$ReceiveTimeoutImpl({this.message}) : super._();
 
   @override
   final String? message;
@@ -2137,21 +2188,24 @@ class _$_ReceiveTimeout extends _ReceiveTimeout {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReceiveTimeout &&
+            other is _$ReceiveTimeoutImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReceiveTimeoutCopyWith<_$_ReceiveTimeout> get copyWith =>
-      __$$_ReceiveTimeoutCopyWithImpl<_$_ReceiveTimeout>(this, _$identity);
+  _$$ReceiveTimeoutImplCopyWith<_$ReceiveTimeoutImpl> get copyWith =>
+      __$$ReceiveTimeoutImplCopyWithImpl<_$ReceiveTimeoutImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2283,35 +2337,41 @@ class _$_ReceiveTimeout extends _ReceiveTimeout {
 }
 
 abstract class _ReceiveTimeout extends NetworkFailure {
-  const factory _ReceiveTimeout({final String? message}) = _$_ReceiveTimeout;
+  const factory _ReceiveTimeout({final String? message}) = _$ReceiveTimeoutImpl;
   const _ReceiveTimeout._() : super._();
 
   String? get message;
-  @JsonKey(ignore: true)
-  _$$_ReceiveTimeoutCopyWith<_$_ReceiveTimeout> get copyWith =>
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReceiveTimeoutImplCopyWith<_$ReceiveTimeoutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NotAcceptableCopyWith<$Res> {
-  factory _$$_NotAcceptableCopyWith(
-          _$_NotAcceptable value, $Res Function(_$_NotAcceptable) then) =
-      __$$_NotAcceptableCopyWithImpl<$Res>;
+abstract class _$$NotAcceptableImplCopyWith<$Res> {
+  factory _$$NotAcceptableImplCopyWith(
+          _$NotAcceptableImpl value, $Res Function(_$NotAcceptableImpl) then) =
+      __$$NotAcceptableImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NotAcceptableCopyWithImpl<$Res>
-    extends _$NetworkFailureCopyWithImpl<$Res, _$_NotAcceptable>
-    implements _$$_NotAcceptableCopyWith<$Res> {
-  __$$_NotAcceptableCopyWithImpl(
-      _$_NotAcceptable _value, $Res Function(_$_NotAcceptable) _then)
+class __$$NotAcceptableImplCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res, _$NotAcceptableImpl>
+    implements _$$NotAcceptableImplCopyWith<$Res> {
+  __$$NotAcceptableImplCopyWithImpl(
+      _$NotAcceptableImpl _value, $Res Function(_$NotAcceptableImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_NotAcceptable extends _NotAcceptable {
-  const _$_NotAcceptable() : super._();
+class _$NotAcceptableImpl extends _NotAcceptable {
+  const _$NotAcceptableImpl() : super._();
 
   @override
   String toString() {
@@ -2319,9 +2379,9 @@ class _$_NotAcceptable extends _NotAcceptable {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NotAcceptable);
+        (other.runtimeType == runtimeType && other is _$NotAcceptableImpl);
   }
 
   @override
@@ -2457,6 +2517,6 @@ class _$_NotAcceptable extends _NotAcceptable {
 }
 
 abstract class _NotAcceptable extends NetworkFailure {
-  const factory _NotAcceptable() = _$_NotAcceptable;
+  const factory _NotAcceptable() = _$NotAcceptableImpl;
   const _NotAcceptable._() : super._();
 }
