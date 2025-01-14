@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:sbdv_web/di/injection.dart';
+import 'package:sbdv_web/routes/sbdv_router.gr.dart';
 
 import '../../util/responsive.dart';
 import 'cubit/auth/auth_cubit.dart';
@@ -18,7 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-  String? _errorMessage;
 
   @override
   void dispose() {
@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
                   if (state is AuthSuccess) {
-                    // context.router.replace(DashboardScreen());
+                    context.router.push(DashboardRoute());
                   }
                 },
                 builder: (context, state) {

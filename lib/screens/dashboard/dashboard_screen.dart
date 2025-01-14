@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:sbdv_web/di/injection.dart';
 import 'package:sbdv_web/screens/login/cubit/auth/auth_cubit.dart';
 import 'package:sbdv_web/util/responsive.dart';
@@ -6,6 +7,7 @@ import 'package:sbdv_web/widgets/side_menu_widget.dart';
 import 'package:sbdv_web/widgets/summary_widget.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
