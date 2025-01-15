@@ -29,7 +29,7 @@ class ChartData {
       radius: 16,
     ),
     PieChartSectionData(
-      color: primaryColor.withOpacity(0.1),
+      color: primaryColor.withAlpha((0.1 * 255).toInt()),
       value: 25,
       showTitle: false,
       radius: 13,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:sbdv_web/di/injection.dart';
+import 'package:sbdv_web/routes/sbdv_router.dart';
 import 'package:sbdv_web/routes/sbdv_router.gr.dart';
 
 import '../../util/responsive.dart';
@@ -55,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
                   if (state is AuthSuccess) {
-                    context.router.push(DashboardRoute());
+                    serviceLocator<SBDVRouter>().push(DashboardRoute());
                   }
                 },
                 builder: (context, state) {

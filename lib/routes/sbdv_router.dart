@@ -1,19 +1,27 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:sbdv_web/di/injection.dart';
 import 'package:sbdv_web/routes/routes.dart';
 import 'package:sbdv_web/routes/sbdv_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Screen|Page,Route')
 class SBDVRouter extends RootStackRouter {
-  final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
-
   @override
   late final List<AutoRouteGuard> guards = [
     AutoRouteGuard.simple(
       (resolver, router) {
         // Read the auth token from secure storage
-        _secureStorage.read(key: 'auth_token').then((token) {
+        serviceLocator<FlutterSecureStorage>().read(key: 'auth_token').then((token) {
           final bool isAuthenticated = token != null;
+          // if (isAuthenticated || resolver.routeName == LoginRoute.name) {
+          //   resolver.next();
+          // } else {
+          //   resolver.redirect(
+          //     LoginRoute(onResult: (didLogin) {
+          //       resolver.resolveNext(didLogin, reevaluateNext: false);
+          //     }),
+          //   );
+          // }
           if (isAuthenticated) {
             // If authenticated and trying to access the login route, redirect to dashboard
             if (resolver.routeName == LoginRoute.name) {
@@ -44,6 +52,10 @@ class SBDVRouter extends RootStackRouter {
         AutoRoute(
           page: DashboardRoute.page,
           path: SBDVRoutes.dashboard,
+        ),
+        AutoRoute(
+          page: NotFoundRoute.page,
+          path: '*',
         ),
       ];
 }

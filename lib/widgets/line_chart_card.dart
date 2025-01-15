@@ -72,7 +72,7 @@ class LineChartCard extends StatelessWidget {
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [selectionColor.withOpacity(0.5), Colors.transparent],
+                        colors: [selectionColor.withAlpha((0.5 * 255).toInt()), Colors.transparent],
                       ),
                       show: true,
                     ),

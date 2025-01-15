@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 
 import '../network/dio_helper.dart';
@@ -16,6 +17,9 @@ abstract class ExternalPackageDependencies {
 
   @LazySingleton(env: [Environment.prod])
   SBDVRouter get sbdvRouter => SBDVRouter();
+
+  @LazySingleton(env: [Environment.prod])
+  FlutterSecureStorage get secureStorage => FlutterSecureStorage();
 
   //* Rest Clients
 

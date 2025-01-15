@@ -2,6 +2,9 @@ import 'package:sbdv_web/const/constant.dart';
 import 'package:sbdv_web/data/side_menu_data.dart';
 import 'package:flutter/material.dart';
 
+import '../di/injection.dart';
+import '../screens/login/cubit/auth/auth_cubit.dart';
+
 class SideMenuWidget extends StatefulWidget {
   const SideMenuWidget({super.key});
 
@@ -38,9 +41,14 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
         color: isSelected ? selectionColor : Colors.transparent,
       ),
       child: InkWell(
-        onTap: () => setState(() {
-          selectedIndex = index;
-        }),
+        onTap: () {
+          setState(() {
+            selectedIndex = index;
+          });
+          if (selectedIndex + 1 == data.menu.length) {
+            serviceLocator<AuthCubit>().logout();
+          }
+        },
         child: Row(
           children: [
             Padding(
