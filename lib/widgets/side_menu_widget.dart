@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:sbdv_web/const/constant.dart';
 import 'package:sbdv_web/data/side_menu_data.dart';
 import 'package:flutter/material.dart';
@@ -6,15 +7,14 @@ import '../di/injection.dart';
 import '../screens/login/cubit/auth/auth_cubit.dart';
 
 class SideMenuWidget extends StatefulWidget {
-  const SideMenuWidget({super.key});
+  final TabsRouter tabsRouter;
+  const SideMenuWidget({super.key, required this.tabsRouter});
 
   @override
   State<SideMenuWidget> createState() => _SideMenuWidgetState();
 }
 
 class _SideMenuWidgetState extends State<SideMenuWidget> {
-  int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     final data = SideMenuData();
@@ -30,7 +30,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
   }
 
   Widget buildMenuEntry(SideMenuData data, int index) {
-    final isSelected = selectedIndex == index;
+    final isSelected = widget.tabsRouter.activeIndex == index;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
@@ -42,11 +42,10 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
       ),
       child: InkWell(
         onTap: () {
-          setState(() {
-            selectedIndex = index;
-          });
-          if (selectedIndex + 1 == data.menu.length) {
+          if (index + 1 == data.menu.length) {
             serviceLocator<AuthCubit>().logout();
+          } else {
+            widget.tabsRouter.setActiveIndex(index);
           }
         },
         child: Row(

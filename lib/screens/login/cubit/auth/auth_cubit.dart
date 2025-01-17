@@ -27,7 +27,6 @@ class AuthCubit extends Cubit<AuthState> {
       success: (success) async {
         await serviceLocator<FlutterSecureStorage>().write(key: 'auth_token', value: success.token);
         isAuthenticated = true;
-        print('arone login $isAuthenticated');
         emit(AuthSuccess());
       },
       failure: (failure) {

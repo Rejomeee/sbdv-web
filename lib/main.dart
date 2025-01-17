@@ -6,6 +6,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'const/constant.dart';
 import 'di/injection.dart';
+import 'routes/side_menu_observer.dart';
 import 'screens/login/cubit/auth/auth_cubit.dart';
 
 void main() {
@@ -39,11 +40,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         title: 'Dashborad UIxx',
         debugShowCheckedModeBanner: false,
+        themeAnimationDuration: Duration.zero,
         theme: ThemeData(
           scaffoldBackgroundColor: backgroundColor,
           brightness: Brightness.dark,
         ),
-        routerConfig: serviceLocator<SBDVRouter>().config(),
+        routerConfig: serviceLocator<SBDVRouter>().config(
+          navigatorObservers: () => [SideMenuObserver()],
+        ),
         // home: const LoginScreen(),
         // home: const MainScreen(),
       ),

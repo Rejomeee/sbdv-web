@@ -7,21 +7,18 @@ import 'package:sbdv_web/routes/sbdv_router.gr.dart';
 @AutoRouterConfig(replaceInRouteName: 'Screen|Page,Route')
 class SBDVRouter extends RootStackRouter {
   @override
+  void dispose() {
+    // Dispose of any resources used by the router
+    super.dispose();
+  }
+
+  @override
   late final List<AutoRouteGuard> guards = [
     AutoRouteGuard.simple(
       (resolver, router) {
         // Read the auth token from secure storage
         serviceLocator<FlutterSecureStorage>().read(key: 'auth_token').then((token) {
           final bool isAuthenticated = token != null;
-          // if (isAuthenticated || resolver.routeName == LoginRoute.name) {
-          //   resolver.next();
-          // } else {
-          //   resolver.redirect(
-          //     LoginRoute(onResult: (didLogin) {
-          //       resolver.resolveNext(didLogin, reevaluateNext: false);
-          //     }),
-          //   );
-          // }
           if (isAuthenticated) {
             // If authenticated and trying to access the login route, redirect to dashboard
             if (resolver.routeName == LoginRoute.name) {
@@ -50,8 +47,29 @@ class SBDVRouter extends RootStackRouter {
           initial: true,
         ),
         AutoRoute(
-          page: DashboardRoute.page,
+          page: DashboardHomeRoute.page,
           path: SBDVRoutes.dashboard,
+          children: [
+            AutoRoute(
+              page: DashboardRoute.page,
+              initial: true,
+            ),
+            AutoRoute(
+              path: 'users',
+              page: UserWrapper.page,
+              maintainState: false,
+              children: [
+                AutoRoute(
+                  page: UserRoute.page,
+                  initial: true,
+                ),
+                AutoRoute(
+                  path: 'details',
+                  page: UserDetails.page,
+                ),
+              ],
+            ),
+          ],
         ),
         AutoRoute(
           page: NotFoundRoute.page,
@@ -59,65 +77,3 @@ class SBDVRouter extends RootStackRouter {
         ),
       ];
 }
-
-// @MaterialAutoRouter(
-//   replaceInRouteName: 'Page,Route',
-//   routes: <AutoRoute>[
-//     // AutoRoute<dynamic>(page: SampleScreen, initial: true),
-//     // CustomRoute<dynamic>(
-//     //   page: EntryPoint,
-//     //   transitionsBuilder: TransitionsBuilders.fadeIn,
-//     //   // initial: true,
-//     // ),
-//     // CustomRoute<dynamic>(
-//     //   page: MessageHomeScreen,
-//     //   transitionsBuilder: TransitionsBuilders.fadeIn,
-//     //   // initial: true,
-//     // ),
-//     // // CustomRoute<dynamic>(
-//     // //   page: UpdatesScreen,
-//     // //   transitionsBuilder: TransitionsBuilders.slideLeft,
-//     // // ),
-//     // // CustomRoute<dynamic>(
-//     // //   page: TransactionsScreen,
-//     // //   transitionsBuilder: TransitionsBuilders.slideLeft,
-//     // // ),
-//     // CustomRoute<dynamic>(
-//     //   page: MarketingFullScreen,
-//     //   transitionsBuilder: TransitionsBuilders.slideLeft,
-//     // ),
-//     // CustomRoute<dynamic>(
-//     //   page: ManageNotificationScreen,
-//     //   transitionsBuilder: TransitionsBuilders.slideBottom,
-//     // ),
-//     // CustomRoute<dynamic>(
-//     //   page: MessageScreen,
-//     //   transitionsBuilder: TransitionsBuilders.slideLeft,
-//     // ),
-//     // CustomRoute<dynamic>(
-//     //   page: SupportHomeScreen,
-//     //   transitionsBuilder: TransitionsBuilders.slideLeft,
-//     // ),
-//     // CustomRoute<dynamic>(
-//     //   page: ChatScreen,
-//     //   transitionsBuilder: TransitionsBuilders.slideLeft,
-//     // ),
-//     // CustomRoute<dynamic>(
-//     //   page: SupportHomeScreen,
-//     //   transitionsBuilder: TransitionsBuilders.slideLeft,
-//     // ),
-//     // CustomRoute<dynamic>(
-//     //   page: MaintenanceScreen,
-//     //   transitionsBuilder: TransitionsBuilders.slideLeft,
-//     // ),
-//     // CustomRoute<dynamic>(
-//     //   page: FullImageScreen,
-//     //   transitionsBuilder: TransitionsBuilders.slideLeft,
-//     // ),
-//     // CustomRoute<dynamic>(
-//     //   page: PreviewImageScreen,
-//     //   transitionsBuilder: TransitionsBuilders.slideLeft,
-//     // ),
-//   ],
-// )
-// class $MayaRouter {}
