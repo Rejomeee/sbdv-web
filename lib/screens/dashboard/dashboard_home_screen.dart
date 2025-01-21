@@ -16,9 +16,15 @@ class DashboardHomeScreen extends StatelessWidget {
     return AutoTabsRouter.pageView(
       routes: const [
         DashboardRoute(),
+        AnnouncementRoute(),
+        ResidentRoute(),
+        SubdivisionRoute(),
+        RoleRoute(),
+        LogRoute(),
         UserRoute(),
       ],
       animatePageTransition: false,
+      physics: NeverScrollableScrollPhysics(),
       builder: (context, child, pageController) {
         final TabsRouter tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
@@ -52,11 +58,11 @@ class DashboardHomeScreen extends StatelessWidget {
                   flex: 7,
                   child: child,
                 ),
-                if (isDesktop)
-                  Expanded(
-                    flex: 3,
-                    child: SummaryWidget(),
-                  ),
+                // if (isDesktop)
+                //   Expanded(
+                //     flex: 3,
+                //     child: SummaryWidget(),
+                //   ),
               ],
             ),
           ),

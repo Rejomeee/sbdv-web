@@ -13,24 +13,36 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18),
-        child: Column(
-          children: [
-            const SizedBox(height: 18),
-            const HeaderWidget(),
-            const SizedBox(height: 18),
-            const ActivityDetailsCard(),
-            const SizedBox(height: 18),
-            const LineChartCard(),
-            const SizedBox(height: 18),
-            const BarGraphCard(),
-            const SizedBox(height: 18),
-            if (Responsive.isTablet(context)) const SummaryWidget(),
-          ],
+    return Row(
+      children: [
+        Expanded(
+          flex: 8,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              child: Column(
+                children: [
+                  const SizedBox(height: 18),
+                  const HeaderWidget(),
+                  const SizedBox(height: 18),
+                  const ActivityDetailsCard(),
+                  const SizedBox(height: 18),
+                  const LineChartCard(),
+                  const SizedBox(height: 18),
+                  const BarGraphCard(),
+                  const SizedBox(height: 18),
+                  if (Responsive.isTablet(context)) const SummaryWidget(),
+                ],
+              ),
+            ),
+          ),
         ),
-      ),
+        if (Responsive.isDesktop(context))
+          Expanded(
+            flex: 4,
+            child: SummaryWidget(),
+          )
+      ],
     );
   }
 }

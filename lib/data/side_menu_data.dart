@@ -6,44 +6,34 @@ class SideMenuData {
     MenuModel(
       icon: Icons.home,
       title: 'Dashboard',
-      onTap: () {
-        // serviceLocator<SBDVRouter>().push(DashboardWidget());
-      },
+    ),
+    MenuModel(
+      icon: Icons.phonelink,
+      title: 'Announcements',
+    ),
+    MenuModel(
+      icon: Icons.person_pin_circle,
+      title: 'Residents',
+    ),
+    MenuModel(
+      icon: Icons.house,
+      title: 'Subdivisions',
+    ),
+    MenuModel(
+      icon: Icons.co_present_rounded,
+      title: 'Roles',
+    ),
+    MenuModel(
+      icon: Icons.receipt_long_sharp,
+      title: 'Logs',
     ),
     MenuModel(
       icon: Icons.person,
-      title: 'Profile',
-      onTap: () {
-        // serviceLocator<SBDVRouter>().push(UserRoute());
-      },
+      title: 'My Profile',
     ),
-    // MenuModel(
-    //   icon: Icons.run_circle,
-    //   title: 'Exersice',
-    //   onTap: () {
-    //     // serviceLocator<SBDVRouter>().push(DashboardWidget());
-    //   },
-    // ),
-    // MenuModel(
-    //   icon: Icons.settings,
-    //   title: 'Settings',
-    //   onTap: () {
-    //     // serviceLocator<SBDVRouter>().push(DashboardWidget());
-    //   },
-    // ),
-    // MenuModel(
-    //   icon: Icons.history,
-    //   title: 'History',
-    //   onTap: () {
-    //     // serviceLocator<SBDVRouter>().push(DashboardWidget());
-    //   },
-    // ),
     MenuModel(
       icon: Icons.logout,
       title: 'SignOut',
-      onTap: () {
-        // serviceLocator<SBDVRouter>().push(DashboardWidget());
-      },
     ),
   ];
 }

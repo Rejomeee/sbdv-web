@@ -32,42 +32,52 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
   Widget buildMenuEntry(SideMenuData data, int index) {
     final isSelected = widget.tabsRouter.activeIndex == index;
 
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(6.0),
+    return Column(
+      children: [
+        Visibility(
+          visible: index + 1 == data.menu.length,
+          child: Divider(color: Colors.grey), // Divider or line at the top
         ),
-        color: isSelected ? selectionColor : Colors.transparent,
-      ),
-      child: InkWell(
-        onTap: () {
-          if (index + 1 == data.menu.length) {
-            serviceLocator<AuthCubit>().logout();
-          } else {
-            widget.tabsRouter.setActiveIndex(index);
-          }
-        },
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 7),
-              child: Icon(
-                data.menu[index].icon,
-                color: isSelected ? Colors.black : Colors.grey,
-              ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 5),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(6.0),
             ),
-            Text(
-              data.menu[index].title,
-              style: TextStyle(
-                fontSize: 16,
-                color: isSelected ? Colors.black : Colors.grey,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-              ),
-            )
-          ],
+            color: isSelected ? selectionColor : Colors.transparent,
+          ),
+          child: InkWell(
+            onTap: () {
+              if (index + 1 == data.menu.length) {
+                serviceLocator<AuthCubit>().logout();
+              } else {
+                widget.tabsRouter.setActiveIndex(index);
+              }
+            },
+            child: Row(
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 13, vertical: 7),
+                  child: Icon(
+                    data.menu[index].icon,
+                    color: isSelected ? Colors.black : Colors.grey,
+                  ),
+                ),
+                Text(
+                  data.menu[index].title,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: isSelected ? Colors.black : Colors.grey,
+                    fontWeight:
+                        isSelected ? FontWeight.w600 : FontWeight.normal,
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }

@@ -17,7 +17,9 @@ class SBDVRouter extends RootStackRouter {
     AutoRouteGuard.simple(
       (resolver, router) {
         // Read the auth token from secure storage
-        serviceLocator<FlutterSecureStorage>().read(key: 'auth_token').then((token) {
+        serviceLocator<FlutterSecureStorage>()
+            .read(key: 'auth_token')
+            .then((token) {
           final bool isAuthenticated = token != null;
           if (isAuthenticated) {
             // If authenticated and trying to access the login route, redirect to dashboard
@@ -53,6 +55,61 @@ class SBDVRouter extends RootStackRouter {
             AutoRoute(
               page: DashboardRoute.page,
               initial: true,
+            ),
+            AutoRoute(
+              path: 'announcements',
+              page: AnnouncementWrapper.page,
+              maintainState: false,
+              children: [
+                AutoRoute(
+                  page: AnnouncementRoute.page,
+                  initial: true,
+                ),
+              ],
+            ),
+            AutoRoute(
+              path: 'residents',
+              page: ResidentWrapper.page,
+              maintainState: false,
+              children: [
+                AutoRoute(
+                  page: ResidentRoute.page,
+                  initial: true,
+                ),
+              ],
+            ),
+            AutoRoute(
+              path: 'subdivisions',
+              page: SubdivisionWrapper.page,
+              maintainState: false,
+              children: [
+                AutoRoute(
+                  page: SubdivisionRoute.page,
+                  initial: true,
+                ),
+              ],
+            ),
+            AutoRoute(
+              path: 'roles',
+              page: RoleWrapper.page,
+              maintainState: false,
+              children: [
+                AutoRoute(
+                  page: RoleRoute.page,
+                  initial: true,
+                ),
+              ],
+            ),
+            AutoRoute(
+              path: 'logs',
+              page: LogWrapper.page,
+              maintainState: false,
+              children: [
+                AutoRoute(
+                  page: LogRoute.page,
+                  initial: true,
+                ),
+              ],
             ),
             AutoRoute(
               path: 'users',

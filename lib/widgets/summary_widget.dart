@@ -4,6 +4,8 @@ import 'package:sbdv_web/widgets/scheduled_widget.dart';
 import 'package:sbdv_web/widgets/summary_details.dart';
 import 'package:flutter/material.dart';
 
+import '../util/responsive.dart';
+
 class SummaryWidget extends StatelessWidget {
   const SummaryWidget({super.key});
 
@@ -15,7 +17,8 @@ class SummaryWidget extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
+        child: ListView(
+          shrinkWrap: !Responsive.isDesktop(context),
           children: [
             SizedBox(height: 20),
             Chart(),
