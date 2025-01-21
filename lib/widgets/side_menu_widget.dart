@@ -7,8 +7,7 @@ import '../di/injection.dart';
 import '../screens/login/cubit/auth/auth_cubit.dart';
 
 class SideMenuWidget extends StatefulWidget {
-  final TabsRouter tabsRouter;
-  const SideMenuWidget({super.key, required this.tabsRouter});
+  const SideMenuWidget({super.key});
 
   @override
   State<SideMenuWidget> createState() => _SideMenuWidgetState();
@@ -30,7 +29,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
   }
 
   Widget buildMenuEntry(SideMenuData data, int index) {
-    final isSelected = widget.tabsRouter.activeIndex == index;
+    final isSelected = AutoTabsRouter.of(context).activeIndex == index;
 
     return Column(
       children: [
@@ -51,14 +50,14 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
               if (index + 1 == data.menu.length) {
                 serviceLocator<AuthCubit>().logout();
               } else {
-                widget.tabsRouter.setActiveIndex(index);
+                AutoTabsRouter.of(context).setActiveIndex(index);
+                if (Scaffold.of(context).isDrawerOpen) Scaffold.of(context).closeDrawer();
               }
             },
             child: Row(
               children: [
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 13, vertical: 7),
+                  padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 7),
                   child: Icon(
                     data.menu[index].icon,
                     color: isSelected ? Colors.black : Colors.grey,
@@ -69,8 +68,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                   style: TextStyle(
                     fontSize: 16,
                     color: isSelected ? Colors.black : Colors.grey,
-                    fontWeight:
-                        isSelected ? FontWeight.w600 : FontWeight.normal,
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                   ),
                 )
               ],

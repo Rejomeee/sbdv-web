@@ -12,8 +12,7 @@ class DashboardHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
-
-    return AutoTabsRouter.pageView(
+    return AutoTabsRouter(
       routes: const [
         DashboardRoute(),
         AnnouncementRoute(),
@@ -23,17 +22,13 @@ class DashboardHomeScreen extends StatelessWidget {
         LogRoute(),
         UserRoute(),
       ],
-      animatePageTransition: false,
-      physics: NeverScrollableScrollPhysics(),
-      builder: (context, child, pageController) {
-        final TabsRouter tabsRouter = AutoTabsRouter.of(context);
+      duration: Duration.zero,
+      builder: (context, child) {
         return Scaffold(
           drawer: !isDesktop
               ? SizedBox(
                   width: 250,
-                  child: SideMenuWidget(
-                    tabsRouter: tabsRouter,
-                  ),
+                  child: SideMenuWidget(),
                 )
               : null,
           endDrawer: Responsive.isMobile(context)
@@ -49,62 +44,18 @@ class DashboardHomeScreen extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: SizedBox(
-                      child: SideMenuWidget(
-                        tabsRouter: tabsRouter,
-                      ),
+                      child: SideMenuWidget(),
                     ),
                   ),
                 Expanded(
                   flex: 7,
                   child: child,
                 ),
-                // if (isDesktop)
-                //   Expanded(
-                //     flex: 3,
-                //     child: SummaryWidget(),
-                //   ),
               ],
             ),
           ),
         );
       },
-
-      // child: Scaffold(
-      //   drawer: !isDesktop
-      //       ? const SizedBox(
-      //           width: 250,
-      //           child: SideMenuWidget(),
-      //         )
-      //       : null,
-      //   endDrawer: Responsive.isMobile(context)
-      //       ? SizedBox(
-      //           width: MediaQuery.of(context).size.width * 0.8,
-      //           child: const SummaryWidget(),
-      //         )
-      //       : null,
-      //   body: SafeArea(
-      //     child: Row(
-      //       children: [
-      //         if (isDesktop)
-      //           Expanded(
-      //             flex: 2,
-      //             child: SizedBox(
-      //               child: SideMenuWidget(),
-      //             ),
-      //           ),
-      //         Expanded(
-      //           flex: 7,
-      //           child: DashboardWrapper(),
-      //         ),
-      //         if (isDesktop)
-      //           Expanded(
-      //             flex: 3,
-      //             child: SummaryWidget(),
-      //           ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
