@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:sbdv_web/const/constant.dart';
 import 'package:sbdv_web/util/responsive.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,8 @@ class HeaderWidget extends StatelessWidget {
               ),
             ),
           ),
-        if (!Responsive.isMobile(context))
+        if (context.router.current.name.toString() == 'DashboardHomeRoute' &&
+            !Responsive.isMobile(context))
           Expanded(
             child: TextField(
               decoration: InputDecoration(
@@ -56,13 +58,17 @@ class HeaderWidget extends StatelessWidget {
         if (Responsive.isMobile(context))
           Row(
             children: [
-              IconButton(
-                icon: const Icon(
-                  Icons.search,
-                  color: Colors.grey,
-                  size: 25,
+              Visibility(
+                visible: context.router.current.name.toString() ==
+                    'DashboardHomeRoute',
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.search,
+                    color: Colors.grey,
+                    size: 25,
+                  ),
+                  onPressed: () {},
                 ),
-                onPressed: () {},
               ),
               InkWell(
                 onTap: () => Scaffold.of(context).openEndDrawer(),
