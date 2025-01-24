@@ -26,8 +26,7 @@ class HeaderWidget extends StatelessWidget {
               ),
             ),
           ),
-        if (context.router.current.name.toString() == 'DashboardHomeRoute' &&
-            !Responsive.isMobile(context))
+        if (context.router.current.name.toString() == 'DashboardHomeRoute' && !Responsive.isMobile(context))
           Expanded(
             child: TextField(
               decoration: InputDecoration(
@@ -59,8 +58,7 @@ class HeaderWidget extends StatelessWidget {
           Row(
             children: [
               Visibility(
-                visible: context.router.current.name.toString() ==
-                    'DashboardHomeRoute',
+                visible: context.router.current.name.toString() == 'DashboardHomeRoute',
                 child: IconButton(
                   icon: const Icon(
                     Icons.search,
