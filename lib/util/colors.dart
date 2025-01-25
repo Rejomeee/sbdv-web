@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 class CustomColors {
   CustomColors._();
 
+  static const Color transparentColor = Colors.transparent;
+  static const Color scaffoldBackgroundColorDarkMode = Color(0xFF1C1C1C);
+
+  static const Color primaryGreenColor = Color.fromRGBO(0, 158, 96, 1);
+
   ///Figma Primary Black color
   static const Color primaryBlackColor = Color.fromRGBO(0, 0, 0, 1);
 
@@ -56,4 +61,7 @@ class CustomColors {
 
   ///Figma Grey 1 color
   static const Color grey1Color = Color.fromRGBO(249, 249, 250, 1);
+
+  ///Figma error color
+  static const Color errorColor = Color.fromRGBO(252, 115, 122, 1.0);
 }

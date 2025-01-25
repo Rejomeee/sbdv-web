@@ -24,92 +24,40 @@ class UserSource extends DataTableSource {
     users.sort((a, b) {
       final aValue = getField(a);
       final bValue = getField(b);
-      return ascending
-          ? Comparable.compare(aValue, bValue)
-          : Comparable.compare(bValue, aValue);
+      return ascending ? Comparable.compare(aValue, bValue) : Comparable.compare(bValue, aValue);
     });
     notifyListeners();
   }
 
   List<UserModel> users = [
-    UserModel(
-        'sadf',
-        ' weavf',
-        'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa',
-        'vvvr',
-        'ge'),
+    UserModel('sadf', ' weavf', 'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa', 'vvvr', 'ge'),
     UserModel('sasdf', ' weaf', 'waebfa', 'vxvv', 'sada'),
     UserModel('sa', ' wexaf', 'waxefha', 'vvhv', 's'),
     UserModel('Aronej', 'Dore', '', '', ''),
-    UserModel(
-        'sadf',
-        ' weavf',
-        'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa',
-        'vvvr',
-        'ge'),
+    UserModel('sadf', ' weavf', 'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa', 'vvvr', 'ge'),
     UserModel('sasdf', ' weaf', 'waebfa', 'vxvv', 'sada'),
     UserModel('sa', ' wexaf', 'waxefha', 'vvhv', 's'),
-    UserModel(
-        'sadf',
-        ' weavf',
-        'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa',
-        'vvvr',
-        'ge'),
-    UserModel(
-        'sadf',
-        ' weavf',
-        'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa',
-        'vvvr',
-        'ge'),
+    UserModel('sadf', ' weavf', 'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa', 'vvvr', 'ge'),
+    UserModel('sadf', ' weavf', 'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa', 'vvvr', 'ge'),
     UserModel('sasdf', ' weaf', 'waebfa', 'vxvv', 'sada'),
     UserModel('sa', ' wexaf', 'waxefha', 'vvhv', 's'),
     UserModel('sasdf', ' weaf', 'waebfa', 'vxvv', 'sada'),
-    UserModel(
-        'sadf',
-        ' weavf',
-        'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa',
-        'vvvr',
-        'ge'),
+    UserModel('sadf', ' weavf', 'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa', 'vvvr', 'ge'),
     UserModel('sasdf', ' weaf', 'waebfa', 'vxvv', 'sada'),
     UserModel('sa', ' wexaf', 'waxefha', 'vvhv', 's'),
     UserModel('sa', ' wexaf', 'waxefha', 'vvhv', 's'),
-    UserModel(
-        'sadf',
-        ' weavf',
-        'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa',
-        'vvvr',
-        'ge'),
+    UserModel('sadf', ' weavf', 'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa', 'vvvr', 'ge'),
     UserModel('sasdf', ' weaf', 'waebfa', 'vxvv', 'sada'),
     UserModel('sa', ' wexaf', 'waxefha', 'vvhv', 's'),
-    UserModel(
-        'sadf',
-        ' weavf',
-        'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa',
-        'vvvr',
-        'ge'),
-    UserModel(
-        'sadf',
-        ' weavf',
-        'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa',
-        'vvvr',
-        'ge'),
+    UserModel('sadf', ' weavf', 'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa', 'vvvr', 'ge'),
+    UserModel('sadf', ' weavf', 'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa', 'vvvr', 'ge'),
     UserModel('sasdf', ' weaf', 'waebfa', 'vxvv', 'sada'),
     UserModel('sa', ' wexaf', 'waxefha', 'vvhv', 's'),
     UserModel('sasdf', ' weaf', 'waebfa', 'vxvv', 'sada'),
-    UserModel(
-        'sadf',
-        ' weavf',
-        'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa',
-        'vvvr',
-        'ge'),
+    UserModel('sadf', ' weavf', 'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa', 'vvvr', 'ge'),
     UserModel('sasdf', ' weaf', 'waebfa', 'vxvv', 'sada'),
     UserModel('sa', ' wexaf', 'waxefha', 'vvhv', 's'),
-    UserModel(
-        'sadf',
-        ' weavf',
-        'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa',
-        'vvvr',
-        'ge'),
+    UserModel('sadf', ' weavf', 'wavasfeoaiwj fowaijef oaewjf aowifj aofij awo fjawoijf efa', 'vvvr', 'ge'),
     UserModel('sasdf', ' weaf', 'waebfa', 'vxvv', 'sada'),
     UserModel('sa', ' wexaf', 'waxefha', 'vvhv', 's'),
     UserModel('sa', ' wexaf', 'waxefha', 'vvhv', 's'),

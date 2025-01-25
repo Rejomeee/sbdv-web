@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sbdv_web/screens/dashboard/screens/user/user_source.dart';
 import 'package:sbdv_web/util/styles.dart';
@@ -16,6 +15,8 @@ class UserScreen extends StatefulWidget {
 }
 
 class _UserScreenState extends State<UserScreen> {
+  TextEditingController _searchController = TextEditingController();
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -35,6 +36,7 @@ class _UserScreenState extends State<UserScreen> {
 
   @override
   void dispose() {
+    _searchController.dispose();
     // _usersSource.dispose();
     super.dispose();
   }
@@ -43,28 +45,23 @@ class _UserScreenState extends State<UserScreen> {
     return [
       DataColumn(
         label: const Text('First Name'),
-        onSort: (columnIndex, ascending) =>
-            sort<String>((d) => d.first_name, columnIndex, ascending),
+        onSort: (columnIndex, ascending) => sort<String>((d) => d.first_name, columnIndex, ascending),
       ),
       DataColumn(
         label: const Text('Last Name'),
-        onSort: (columnIndex, ascending) =>
-            sort<String>((d) => d.last_name, columnIndex, ascending),
+        onSort: (columnIndex, ascending) => sort<String>((d) => d.last_name, columnIndex, ascending),
       ),
       DataColumn(
         label: const Text('Email'),
-        onSort: (columnIndex, ascending) =>
-            sort<String>((d) => d.email, columnIndex, ascending),
+        onSort: (columnIndex, ascending) => sort<String>((d) => d.email, columnIndex, ascending),
       ),
       DataColumn(
         label: const Text('Phone'),
-        onSort: (columnIndex, ascending) =>
-            sort<String>((d) => d.phone, columnIndex, ascending),
+        onSort: (columnIndex, ascending) => sort<String>((d) => d.phone, columnIndex, ascending),
       ),
       DataColumn(
         label: const Text('Address'),
-        onSort: (columnIndex, ascending) =>
-            sort<String>((d) => d.address, columnIndex, ascending),
+        onSort: (columnIndex, ascending) => sort<String>((d) => d.address, columnIndex, ascending),
       ),
 
       // DataColumn(
@@ -149,10 +146,40 @@ class _UserScreenState extends State<UserScreen> {
             headerSection(context, elevatedButtonStyle),
             Expanded(
               child: PaginatedDataTable2(
+                columnSpacing: 16,
+                horizontalMargin: 12,
+                checkboxHorizontalMargin: 8,
+                headingRowColor: WidgetStateProperty.all(Colors.grey[900]),
+                headingTextStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                showCheckboxColumn: true,
+                rowsPerPage: 8,
+                minWidth: 800,
                 columns: _columns,
-                header: const Text('Data Header'), // add search bar here
+                header: Row(
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: TextField(
+                        controller: _searchController,
+                        decoration: InputDecoration(
+                          labelText: 'Search',
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (value) {
+                          // Implement search logic here
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      flex: 8,
+                      child: const SizedBox(),
+                    ),
+                  ],
+                ),
                 source: UserSource(),
-                rowsPerPage: 10,
                 dataRowHeight: 100,
                 dataTextStyle: Theme.of(context).defaultTheme.fontSize16?.bold,
               ),
@@ -178,9 +205,7 @@ class _UserScreenState extends State<UserScreen> {
               ),
               RichText(
                 text: TextSpan(
-                  style: Theme.of(context)
-                      .defaultTheme
-                      .fontSize16, // TODO: add colors
+                  style: Theme.of(context).defaultTheme.fontSize16, // TODO: add colors
                   children: [
                     TextSpan(
                       text: 'You have ',

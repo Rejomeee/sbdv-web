@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:sbdv_web/routes/sbdv_router.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
-import 'const/constant.dart';
 import 'di/injection.dart';
 import 'routes/side_menu_observer.dart';
 import 'screens/login/cubit/auth/auth_cubit.dart';
+import 'util/styles.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,10 +41,11 @@ class MyApp extends StatelessWidget {
         title: 'Dashborad UIxx',
         debugShowCheckedModeBanner: false,
         themeAnimationDuration: Duration.zero,
-        theme: ThemeData(
-          scaffoldBackgroundColor: backgroundColor,
-          brightness: Brightness.dark,
-        ),
+        // theme: ThemeData(
+        //   scaffoldBackgroundColor: backgroundColor,
+        //   brightness: Brightness.dark,
+        // ),
+        theme: Styles.lightTheme,
         routerConfig: serviceLocator<SBDVRouter>().config(
           navigatorObservers: () => [SideMenuObserver()],
         ),

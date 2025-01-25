@@ -68,7 +68,7 @@ class NetworkFailure with _$NetworkFailure {
   ///Returns the equivalent String message for the message on our error UI
   String get errorMessage => when(
         maintenanceMode: () => "Strings.maintenanceModeDescription",
-        unauthorized: () => "Unauthorized Request.",
+        unauthorized: () => "Unauthorized Request",
         sessionTimedOut: () => "Strings.timeOutErrorMessage",
         expected: () => '',
         unexpected: (msg) => "Constants.inboxPrint ? msg : Strings.defaultErrorMessage",

@@ -1,40 +1,82 @@
 import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sbdv_web/routes/sbdv_router.dart';
 import 'package:sbdv_web/routes/sbdv_router.gr.dart';
 
 import '../../../../di/injection.dart';
+import '../../../../network/failures/app_failure.dart';
 import '../../../../repositories/auth/authentication_repository.dart';
+import '../../model/auth_model.dart';
+import '../../model/login_form_validated_field.dart';
 
 part 'auth_state.dart';
+part 'auth_cubit.freezed.dart';
 
 @LazySingleton()
 class AuthCubit extends Cubit<AuthState> {
   final AuthenticationRepository _authenticationRepository;
 
-  AuthCubit(this._authenticationRepository) : super(AuthInitial());
+  AuthCubit(this._authenticationRepository) : super(AuthState.initial());
 
   String errorMessage = '';
 
   bool isAuthenticated = false;
 
-  void login(String username, String password) async {
-    // Simulate a login process
-    final result = await _authenticationRepository.login(username, password);
-    result.when(
-      success: (success) async {
-        await serviceLocator<FlutterSecureStorage>().write(key: 'auth_token', value: success.token);
-        isAuthenticated = true;
-        emit(AuthSuccess());
-      },
-      failure: (failure) {
-        errorMessage = 'Invalid username or password';
-        isAuthenticated = false;
-        emit(AuthFailure(error: failure.errorMessage));
-      },
+  ///Updates the `username` property of the model from the state using [value]
+  void onUsernameChanged(String value) {
+    emit(
+      state.copyWith(
+        validatedUsername: LoginFormValidatedField(
+          value,
+        ),
+        model: state.model.copyWith(username: value),
+      ),
     );
+  }
+
+  ///Updates the `password` property of the model from the state using [value]
+  void onPasswordChanged(String value) {
+    emit(
+      state.copyWith(
+        validatedPassword: LoginFormValidatedField(
+          value,
+        ),
+        model: state.model.copyWith(password: value),
+      ),
+    );
+  }
+
+  void login(String username, String password) async {
+    emit(state.copyWith(state: AuthStates.loading, error: null));
+    await Future<dynamic>.delayed(const Duration(seconds: 2));
+    if (_isDataValid) {
+      // Simulate a login process
+      final result = await _authenticationRepository.login(username, password);
+      result.when(
+        success: (success) async {
+          await serviceLocator<FlutterSecureStorage>().write(key: 'auth_token', value: success.token);
+          isAuthenticated = true;
+          emit(state.copyWith(state: AuthStates.success));
+        },
+        failure: (failure) {
+          errorMessage = 'Invalid username or password';
+          isAuthenticated = false;
+          emit(state.copyWith(
+            error: failure,
+            state: AuthStates.initial,
+          ));
+        },
+      );
+    } else {
+      emit(
+        state.copyWith(
+          shouldShowValidation: true,
+          state: AuthStates.initial,
+        ),
+      );
+    }
   }
 
   void logout() async {
@@ -43,10 +85,11 @@ class AuthCubit extends Cubit<AuthState> {
       success: (success) async {
         await serviceLocator<FlutterSecureStorage>().delete(key: 'auth_token');
         isAuthenticated = false;
-        emit(AuthLogout());
+        emit(AuthState.initial());
       },
       failure: (failure) async {
         await serviceLocator<FlutterSecureStorage>().delete(key: 'auth_token');
+        emit(AuthState.initial());
       },
     );
     serviceLocator<SBDVRouter>().replace(LoginRoute());
@@ -58,13 +101,15 @@ class AuthCubit extends Cubit<AuthState> {
       success: (success) async {
         await serviceLocator<FlutterSecureStorage>().write(key: 'auth_token', value: success.token);
         isAuthenticated = true;
-        emit(AuthSuccess());
+        // emit(AuthSuccess());
       },
       failure: (failure) async {
         isAuthenticated = false;
         await serviceLocator<FlutterSecureStorage>().delete(key: 'auth_token');
-        emit(AuthLogout());
+        // emit(AuthLogout());
       },
     );
   }
+
+  bool get _isDataValid => state.validatedUsername.isValid() && state.validatedPassword.isValid();
 }

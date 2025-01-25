@@ -29,8 +29,7 @@ class DashboardBase extends StatelessWidget {
       padding: const EdgeInsets.all(18),
       child: Column(
         children: [
-          if (context.router.current.name.toString() == 'DashboardHomeRoute' ||
-              !Responsive.isDesktop(context)) ...[
+          if (context.router.current.name.toString() == 'DashboardHomeRoute' || !Responsive.isDesktop(context)) ...[
             const HeaderWidget(),
             const SizedBox(height: 18),
           ],

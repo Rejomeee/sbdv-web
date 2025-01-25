@@ -1,7 +1,171 @@
 import 'package:flutter/material.dart';
+import 'package:sbdv_web/util/colors.dart';
 
 class Styles {
   Styles._();
+  static final ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
+    scaffoldBackgroundColor: CustomColors.primaryWhiteColor,
+    tabBarTheme: const TabBarTheme(
+      indicator: BoxDecoration(),
+      labelPadding: EdgeInsets.symmetric(horizontal: 4),
+      labelColor: CustomColors.primaryBlackColor,
+      unselectedLabelColor: CustomColors.grey5Color,
+    ),
+    textTheme: TextTheme(
+      displayLarge: _primaryStyle.fontSize40,
+      displayMedium: _primaryStyle.fontSize36,
+      displaySmall: _primaryStyle.fontSize32,
+      headlineMedium: _primaryStyle.fontSize28,
+      headlineSmall: _primaryStyle.fontSize24,
+      titleLarge: _primaryStyle.fontSize20,
+      titleMedium: _primaryStyle.fontSize18,
+      titleSmall: _primaryStyle.fontSize16,
+      bodyLarge: _primaryStyle.fontSize14,
+      bodyMedium: _primaryStyle.fontSize12,
+    ),
+    primaryTextTheme: TextTheme(
+      displayLarge: _primaryStyle.fontSize40.primaryBlackColor,
+      displayMedium: _primaryStyle.fontSize36.primaryBlackColor,
+      displaySmall: _primaryStyle.fontSize32.primaryBlackColor,
+      headlineMedium: _primaryStyle.fontSize28.primaryBlackColor,
+      headlineSmall: _primaryStyle.fontSize24.primaryBlackColor,
+      titleLarge: _primaryStyle.fontSize20.primaryBlackColor,
+      titleMedium: _primaryStyle.fontSize18.primaryBlackColor,
+      titleSmall: _primaryStyle.fontSize16.primaryBlackColor,
+      bodyLarge: _primaryStyle.fontSize14.primaryBlackColor,
+      bodyMedium: _primaryStyle.fontSize12.primaryBlackColor,
+    ),
+    checkboxTheme: const CheckboxThemeData(
+      side: BorderSide(
+        color: CustomColors.grey3Color,
+        width: 1,
+      ),
+    ),
+    iconTheme: const IconThemeData(color: null),
+    inputDecorationTheme: InputDecorationTheme(
+      border: InputBorder.none,
+      isDense: true,
+      contentPadding: EdgeInsets.all(10),
+      fillColor: CustomColors.grey1Color,
+      filled: true,
+      hintStyle: _primaryStyle.fontSize16.semiBold.copyWith(
+        color: CustomColors.grey4Color,
+      ),
+      focusedBorder: Styles.transparentInputBorder(),
+      enabledBorder: Styles.transparentInputBorder(),
+      errorBorder: Styles.transparentInputBorder(),
+      focusedErrorBorder: Styles.transparentInputBorder(),
+    ),
+    cardTheme: CardTheme(
+      elevation: 0,
+      margin: EdgeInsets.zero,
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(color: CustomColors.grey3Color),
+        borderRadius: BorderRadius.circular(16),
+      ),
+    ),
+    appBarTheme: AppBarTheme(
+      iconTheme: const IconThemeData(color: CustomColors.primaryBlackColor),
+      centerTitle: true,
+      color: CustomColors.primaryWhite80Color,
+      titleTextStyle: _primaryStyle.bold.fontSize16.primaryBlackColor,
+      elevation: 0.0,
+    ),
+    dividerTheme: const DividerThemeData(
+      color: CustomColors.grey3Color,
+      thickness: 1.0,
+    ),
+  );
+
+  static final ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: CustomColors.scaffoldBackgroundColorDarkMode,
+    tabBarTheme: const TabBarTheme(
+      indicator: BoxDecoration(),
+      labelPadding: EdgeInsets.symmetric(horizontal: 4),
+    ),
+    checkboxTheme: const CheckboxThemeData(
+      side: BorderSide(
+        color: CustomColors.grey5Color,
+        width: 1,
+      ),
+    ),
+    textTheme: TextTheme(
+      displayLarge: _primaryStyle.fontSize40.primaryWhiteColor,
+      displayMedium: _primaryStyle.fontSize36.primaryWhiteColor,
+      displaySmall: _primaryStyle.fontSize32.primaryWhiteColor,
+      headlineMedium: _primaryStyle.fontSize28.primaryWhiteColor,
+      headlineSmall: _primaryStyle.fontSize24.primaryWhiteColor,
+      titleLarge: _primaryStyle.fontSize20.primaryWhiteColor,
+      titleMedium: _primaryStyle.fontSize18.primaryWhiteColor,
+      titleSmall: _primaryStyle.fontSize16.primaryWhiteColor,
+      bodyLarge: _primaryStyle.fontSize14.primaryWhiteColor,
+      bodyMedium: _primaryStyle.fontSize12.primaryWhiteColor,
+    ),
+    primaryTextTheme: TextTheme(
+      displayLarge: _primaryStyle.fontSize40.primaryWhiteColor,
+      displayMedium: _primaryStyle.fontSize36.primaryWhiteColor,
+      displaySmall: _primaryStyle.fontSize32.primaryWhiteColor,
+      headlineMedium: _primaryStyle.fontSize28.primaryWhiteColor,
+      headlineSmall: _primaryStyle.fontSize24.primaryWhiteColor,
+      titleLarge: _primaryStyle.fontSize20.primaryWhiteColor,
+      titleMedium: _primaryStyle.fontSize18.primaryWhiteColor,
+      titleSmall: _primaryStyle.fontSize16.primaryWhiteColor,
+      bodyLarge: _primaryStyle.fontSize14.primaryWhiteColor,
+      bodyMedium: _primaryStyle.fontSize12.primaryWhiteColor,
+    ),
+    appBarTheme: AppBarTheme(
+      iconTheme: const IconThemeData(color: CustomColors.primaryWhiteColor),
+      centerTitle: true,
+      color: CustomColors.grey9Color,
+      titleTextStyle: _primaryStyle.fontSize16.bold.primaryWhiteColor,
+      elevation: 0.0,
+    ),
+    dividerTheme: const DividerThemeData(
+      color: CustomColors.grey8Color,
+      thickness: 1.0,
+    ),
+    iconTheme: const IconThemeData(
+      color: CustomColors.primaryWhiteColor,
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: InputBorder.none,
+      isDense: true,
+      contentPadding: EdgeInsets.all(10),
+      fillColor: CustomColors.grey10Color,
+      filled: true,
+      // focusedBorder: OutlineInputBorder(
+      //   borderSide: BorderSide(
+      //     color: CustomColors.primaryWhiteColor,
+      //   ),
+      // ),
+    ),
+    cardTheme: CardTheme(
+      elevation: 0,
+      margin: EdgeInsets.zero,
+      color: CustomColors.grey8Color,
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(
+          color: CustomColors.grey8Color,
+        ),
+        borderRadius: BorderRadius.circular(16.0),
+      ),
+    ),
+  );
+
+  //* Base text styles
+  static const _primaryStyle = TextStyle(
+    fontWeight: FontWeight.normal,
+  );
+
+  static OutlineInputBorder transparentInputBorder() {
+    return const OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.transparent,
+      ),
+    );
+  }
 }
 
 extension ThemeDataExtensions on ThemeData {
@@ -14,6 +178,10 @@ extension ThemeDataExtensions on ThemeData {
   TextStyle? get h5 => defaultTheme.fontSize24?.bold.textHeight(1.33).characterSpacing(-0.75);
 
   TextStyle? get h6 => defaultTheme.fontSize20?.bold.textHeight(1.4).characterSpacing(-0.5);
+
+  Color get textFieldHintColor {
+    return brightness == Brightness.light ? CustomColors.grey4Color : CustomColors.grey6Color;
+  }
 }
 
 extension TextThemeExtensions on TextTheme {
@@ -31,10 +199,11 @@ extension TextThemeExtensions on TextTheme {
 
 extension CustomMayaTextStyles on TextStyle {
   //* Colors and Font Sizes
-  // TextStyle get transparentColor => copyWith(color: CustomColors.transparentColor);
-  // TextStyle get primaryBlackColor => copyWith(color: CustomColors.primaryBlackColor);
-  // TextStyle get primaryGreenColor => copyWith(color: CustomColors.primaryGreenColor);
-  // TextStyle get primaryWhiteColor => copyWith(color: CustomColors.primaryWhiteColor);
+  TextStyle get transparentColor => copyWith(color: CustomColors.transparentColor);
+  TextStyle get primaryBlackColor => copyWith(color: CustomColors.primaryBlackColor);
+  TextStyle get primaryWhiteColor => copyWith(color: CustomColors.primaryWhiteColor);
+  TextStyle get primaryGreenColor => copyWith(color: CustomColors.primaryGreenColor);
+  TextStyle get errorColor => copyWith(color: CustomColors.errorColor);
   // TextStyle get white60Color => copyWith(color: CustomColors.primaryWhite60Color);
   // TextStyle get black60Color => copyWith(color: CustomColors.primaryBlack60Color);
   // TextStyle get black72Color => copyWith(color: CustomColors.primaryBlack72Color);
