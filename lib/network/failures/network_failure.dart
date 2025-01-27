@@ -20,7 +20,8 @@ class NetworkFailure with _$NetworkFailure {
   const factory NetworkFailure.notFound({required String message}) = _NotFound;
 
   ///A failure representing 500 status code errors
-  const factory NetworkFailure.serverError({required String message}) = _ServerError;
+  const factory NetworkFailure.serverError({required String message}) =
+      _ServerError;
 
   ///A failure representing a successful call but returned an empty list when we expect results to have more than 0
   const factory NetworkFailure.emptyList() = _EmptyList;
@@ -32,7 +33,8 @@ class NetworkFailure with _$NetworkFailure {
   const factory NetworkFailure.expected() = _Expected;
 
   ///A failure that occurs for any uncaught errors that may occur.
-  const factory NetworkFailure.unexpected({required String message}) = _Unexpected;
+  const factory NetworkFailure.unexpected({required String message}) =
+      _Unexpected;
 
   ///A failure representing a successful call but channelUrl is null
   const factory NetworkFailure.channelNull() = _ChannelNull;
@@ -41,7 +43,8 @@ class NetworkFailure with _$NetworkFailure {
   const factory NetworkFailure.connectionTimeout() = _ConnectionTimeout;
 
   ///A failure that occurs for receive timeout.
-  const factory NetworkFailure.receiveTimeout({String? message}) = _ReceiveTimeout;
+  const factory NetworkFailure.receiveTimeout({String? message}) =
+      _ReceiveTimeout;
 
   /// A failure representing 406 status code errors.
   const factory NetworkFailure.notAcceptable() = _NotAcceptable;
@@ -53,33 +56,33 @@ class NetworkFailure with _$NetworkFailure {
         unauthorized: () => '',
         sessionTimedOut: () => '',
         maintenanceMode: () => "Strings.maintenanceModeCaption",
-        nullResponse: () => "Constants.inboxPrint ? Strings.devErrorCaption : Strings.defaultErrorCaption",
-        emptyList: () => "Constants.inboxPrint ? Strings.devErrorCaption : Strings.defaultErrorCaption",
-        notFound: (msg) => "Constants.inboxPrint ? Strings.devErrorCaption : Strings.defaultErrorCaption",
+        nullResponse: () => "nullResponse",
+        emptyList: () => "emptyList",
+        notFound: (msg) => "notFound",
         expected: () => '',
-        unexpected: (msg) => "Constants.inboxPrint ? Strings.devErrorCaption : Strings.defaultErrorCaption",
-        serverError: (msg) => "Constants.inboxPrint ? Strings.devErrorCaption : Strings.defaultErrorCaption",
-        channelNull: () => "Constants.inboxPrint ? Strings.devErrorChannelUrlNull : Strings.defaultErrorCaption",
-        connectionTimeout: () => "Constants.inboxPrint ? Strings.devErrorConnection : Strings.defaultErrorCaption",
-        receiveTimeout: (msg) => msg ?? "Strings.defaultErrorCaption",
-        notAcceptable: () => "Constants.inboxPrint ? Strings.dev406Error : Strings.defaultErrorCaption",
+        unexpected: (msg) => "unexpected",
+        serverError: (msg) => "serverError",
+        channelNull: () => "channelNull",
+        connectionTimeout: () => "connectionTimeout",
+        receiveTimeout: (msg) => msg ?? "receiveTimeout",
+        notAcceptable: () => "notAcceptable",
       );
 
   ///Returns the equivalent String message for the message on our error UI
   String get errorMessage => when(
-        maintenanceMode: () => "Strings.maintenanceModeDescription",
+        maintenanceMode: () => "maintenanceMode",
         unauthorized: () => "Unauthorized Request",
-        sessionTimedOut: () => "Strings.timeOutErrorMessage",
+        sessionTimedOut: () => "StrisessionTimedOut",
         expected: () => '',
-        unexpected: (msg) => "Constants.inboxPrint ? msg : Strings.defaultErrorMessage",
-        nullResponse: () => "Constants.inboxPrint ? Strings.devErrorNullResp : Strings.defaultErrorMessage",
-        serverError: (msg) => "Constants.inboxPrint ? '$msg' : Strings.defaultErrorMessage",
-        notFound: (msg) => "Constants.inboxPrint ? '$msg' : Strings.defaultErrorMessage",
-        emptyList: () => "Constants.inboxPrint ? Strings.devErrorEmptyList : Strings.defaultErrorMessage",
-        channelNull: () => "Strings.defaultErrorMessage",
-        connectionTimeout: () => "Strings.defaultErrorMessage",
-        receiveTimeout: (msg) => "Strings.defaultErrorMessage",
-        notAcceptable: () => "Strings.defaultErrorCaption",
+        unexpected: (msg) => "unexpected",
+        nullResponse: () => "nullResponse",
+        serverError: (msg) => "serverError",
+        notFound: (msg) => "notFound",
+        emptyList: () => "emptyList",
+        channelNull: () => "channelNull",
+        connectionTimeout: () => "connectionTimeout",
+        receiveTimeout: (msg) => "receiveTimeout",
+        notAcceptable: () => "notAcceptable",
       );
 
   // coverage:ignore-end

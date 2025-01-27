@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:rive/rive.dart' as rive;
+import 'package:sbdv_web/widgets/custom_text_button.dart';
 
 import '../../di/injection.dart';
 import '../../routes/sbdv_router.dart';
@@ -23,12 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    // context.read<AuthCubit>().login(
-    //       _usernameController.text,
-    //       _passwordController.text,
-    //     );
   }
 
   @override
@@ -62,7 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
           Expanded(
             flex: 5,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: Responsive.isMobile(context) ? 16 : 64),
+              padding: EdgeInsets.symmetric(
+                  horizontal: Responsive.isMobile(context) ? 16 : 64),
               child: BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
                   if (state.state == AuthStates.success) {
@@ -78,7 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Text(
                             'Login',
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 16),
                           if (state.error?.errorMessage != null)
@@ -95,7 +94,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             shouldShowValidation: state.shouldShowValidation,
                             hintText: 'Enter Username',
                             validatedField: state.validatedUsername,
-                            onTextChanged: context.read<AuthCubit>().onUsernameChanged,
+                            onTextChanged:
+                                serviceLocator<AuthCubit>().onUsernameChanged,
                           ),
                           const SizedBox(height: 16),
                           CustomTextField(
@@ -104,35 +104,37 @@ class _LoginScreenState extends State<LoginScreen> {
                             shouldShowValidation: state.shouldShowValidation,
                             hintText: 'Enter Password',
                             validatedField: state.validatedPassword,
-                            onTextChanged: context.read<AuthCubit>().onPasswordChanged,
+                            onTextChanged:
+                                serviceLocator<AuthCubit>().onPasswordChanged,
                             textInputType: TextInputType.visiblePassword,
                           ),
-                          // TextFormField(
-                          //   controller: _passwordController,
-                          //   decoration: InputDecoration(
-                          //     labelText: 'Password',
-                          //     border: OutlineInputBorder(),
-                          //   ),
-                          //   obscureText: true,
-                          //   validator: (value) {
-                          //     if (value == null || value.isEmpty) {
-                          //       return 'Please enter your password';
-                          //     }
-                          //     return null;
-                          //   },
-                          // ),
                           const SizedBox(height: 16),
-                          // TODO ARONE: button UI from figma
-                          ElevatedButton(
-                            onPressed: () {
-                              context.read<AuthCubit>().login(
-                                    _usernameController.text,
-                                    _passwordController.text,
-                                  );
-                            },
-                            child: state.state == AuthStates.loading
-                                ? const CircularProgressIndicator()
-                                : const Text('Login'),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Flexible(
+                                flex: 7,
+                                child: const SizedBox.shrink(),
+                              ),
+                              Flexible(
+                                flex: 5,
+                                child: RoundedTextButton(
+                                  enabled: state.state != AuthStates.loading,
+                                  style: CustomButtonStyle.blackMedium,
+                                  onPressed: () {
+                                    serviceLocator<AuthCubit>().login(
+                                      _usernameController.text,
+                                      _passwordController.text,
+                                    );
+                                  },
+                                  child: state.state == AuthStates.loading
+                                      ? const rive.RiveAnimation.asset(
+                                          'assets/animations/loading.riv',
+                                        )
+                                      : const Text('Login'),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

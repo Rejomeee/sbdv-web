@@ -171,16 +171,57 @@ class Styles {
 extension ThemeDataExtensions on ThemeData {
   TextTheme get defaultTheme => textTheme;
 
-  TextStyle? get h3 => defaultTheme.fontSize40?.bold.textHeight(1.2).characterSpacing(-1.25);
+  TextStyle? get h3 =>
+      defaultTheme.fontSize40?.bold.textHeight(1.2).characterSpacing(-1.25);
 
-  TextStyle? get h4 => defaultTheme.fontSize32?.bold.textHeight(1.25).characterSpacing(-1);
+  TextStyle? get h4 =>
+      defaultTheme.fontSize32?.bold.textHeight(1.25).characterSpacing(-1);
 
-  TextStyle? get h5 => defaultTheme.fontSize24?.bold.textHeight(1.33).characterSpacing(-0.75);
+  TextStyle? get h5 =>
+      defaultTheme.fontSize24?.bold.textHeight(1.33).characterSpacing(-0.75);
 
-  TextStyle? get h6 => defaultTheme.fontSize20?.bold.textHeight(1.4).characterSpacing(-0.5);
+  TextStyle? get h6 =>
+      defaultTheme.fontSize20?.bold.textHeight(1.4).characterSpacing(-0.5);
 
   Color get textFieldHintColor {
-    return brightness == Brightness.light ? CustomColors.grey4Color : CustomColors.grey6Color;
+    return brightness == Brightness.light
+        ? CustomColors.grey4Color
+        : CustomColors.grey6Color;
+  }
+
+  ButtonStyle get blackBigButtonStyle {
+    return TextButton.styleFrom(
+      foregroundColor: CustomColors.primaryWhiteColor,
+      backgroundColor: CustomColors.primaryBlackColor,
+      fixedSize: const Size.fromHeight(56),
+      textStyle: defaultTheme.fontSize16?.primaryWhiteColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+    );
+  }
+
+  ButtonStyle get blackMediumButtonStyle {
+    return TextButton.styleFrom(
+      foregroundColor: CustomColors.primaryWhiteColor,
+      backgroundColor: CustomColors.primaryBlackColor,
+      fixedSize: const Size.fromHeight(44),
+      textStyle: defaultTheme.fontSize16?.primaryWhiteColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+    );
+  }
+
+  ButtonStyle get blackSmallButtonStyle {
+    return TextButton.styleFrom(
+      foregroundColor: CustomColors.primaryWhiteColor,
+      backgroundColor: CustomColors.primaryBlackColor,
+      textStyle: defaultTheme.fontSize16?.primaryWhiteColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+    );
   }
 }
 
@@ -199,10 +240,14 @@ extension TextThemeExtensions on TextTheme {
 
 extension CustomMayaTextStyles on TextStyle {
   //* Colors and Font Sizes
-  TextStyle get transparentColor => copyWith(color: CustomColors.transparentColor);
-  TextStyle get primaryBlackColor => copyWith(color: CustomColors.primaryBlackColor);
-  TextStyle get primaryWhiteColor => copyWith(color: CustomColors.primaryWhiteColor);
-  TextStyle get primaryGreenColor => copyWith(color: CustomColors.primaryGreenColor);
+  TextStyle get transparentColor =>
+      copyWith(color: CustomColors.transparentColor);
+  TextStyle get primaryBlackColor =>
+      copyWith(color: CustomColors.primaryBlackColor);
+  TextStyle get primaryWhiteColor =>
+      copyWith(color: CustomColors.primaryWhiteColor);
+  TextStyle get primaryGreenColor =>
+      copyWith(color: CustomColors.primaryGreenColor);
   TextStyle get errorColor => copyWith(color: CustomColors.errorColor);
   // TextStyle get white60Color => copyWith(color: CustomColors.primaryWhite60Color);
   // TextStyle get black60Color => copyWith(color: CustomColors.primaryBlack60Color);
@@ -248,5 +293,6 @@ extension CustomMayaTextStyles on TextStyle {
   //* Additional Sizing
   TextStyle textHeight(double height) => copyWith(height: height);
   TextStyle textWeight(FontWeight weight) => copyWith(fontWeight: weight);
-  TextStyle characterSpacing(double spacing) => copyWith(letterSpacing: spacing);
+  TextStyle characterSpacing(double spacing) =>
+      copyWith(letterSpacing: spacing);
 }
