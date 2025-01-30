@@ -3,7 +3,9 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:sbdv_web/screens/dashboard/screens/user/user_source.dart';
 import 'package:sbdv_web/util/styles.dart';
+import 'package:sbdv_web/widgets/custom_text_button.dart';
 
+import '../../../../widgets/custom_search_bar.dart';
 import '../../widgets/dashboard_base.dart';
 
 @RoutePage()
@@ -162,15 +164,23 @@ class _UserScreenState extends State<UserScreen> {
                   children: [
                     Expanded(
                       flex: 4,
-                      child: TextField(
+                      child: CustomSearchBar(
                         controller: _searchController,
-                        decoration: InputDecoration(
-                          labelText: 'Search',
-                          border: OutlineInputBorder(),
-                        ),
-                        onChanged: (value) {
-                          // Implement search logic here
-                        },
+                        // isEnabled: state.maybeWhen(
+                        //   orElse: () => true,
+                        //   error: (_) => false,
+                        //   ready: (data, _) =>
+                        //       !data.shouldDisableSearchBar ||
+                        //       data.bankList.isNotEmpty ||
+                        //       data.hasFilteredBanks,
+                        // ),
+                        // onTextChanged: context
+                        //     .read<IOtherBankPickerScreenCubit>()
+                        //     .onSearchRequest,
+                        // onSubmit: context
+                        //     .read<IOtherBankPickerScreenCubit>()
+                        //     .onSearchRequest,
+                        hintText: 'Search',
                       ),
                     ),
                     Expanded(
@@ -226,13 +236,16 @@ class _UserScreenState extends State<UserScreen> {
               ),
             ],
           ),
-          ElevatedButton(
-            style: elevatedButtonStyle,
+          RoundedTextButton(
+            style: CustomButtonStyle.blackMedium,
             onPressed: () {},
-            child: const Text(
-              'Add Resident',
+            child: FittedBox(
+              child: Text(
+                'Add Resident',
+                style: Theme.of(context).defaultTheme.fontSize16?.bold.primaryWhiteColor,
+              ),
             ),
-          ),
+          )
         ],
       ),
     );

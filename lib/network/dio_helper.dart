@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../util/contants.dart';
 import 'error_interceptor.dart';
 import 'header_interceptor.dart';
 
@@ -9,7 +10,7 @@ class DioHelper {
   static Dio createDioInstancecreateDioInstance() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: 'http://localhost:5002',
+        baseUrl: const String.fromEnvironment(Constants.baseUrl),
         connectTimeout: Duration(milliseconds: 5000),
         receiveTimeout: Duration(milliseconds: 3000),
       ),

@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:sbdv_web/const/constant.dart';
+import 'package:rive/rive.dart';
 import 'package:sbdv_web/data/side_menu_data.dart';
 import 'package:flutter/material.dart';
 
 import '../di/injection.dart';
 import '../screens/login/cubit/auth/auth_cubit.dart';
+import '../util/colors.dart';
 
 class SideMenuWidget extends StatefulWidget {
   const SideMenuWidget({super.key});
@@ -19,11 +20,26 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
     final data = SideMenuData();
 
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 20),
-      color: const Color(0xFF171821),
-      child: ListView.builder(
-        itemCount: data.menu.length,
-        itemBuilder: (context, index) => buildMenuEntry(data, index),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      color: CustomColors.primaryGreenColor,
+      height: MediaQuery.of(context).size.height,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 80,
+              child: const RiveAnimation.asset(
+                'assets/animations/cat_playing.riv',
+              ),
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: data.menu.length,
+              itemBuilder: (context, index) => buildMenuEntry(data, index),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -43,9 +59,10 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             borderRadius: const BorderRadius.all(
               Radius.circular(6.0),
             ),
-            color: isSelected ? selectionColor : Colors.transparent,
+            color: isSelected ? CustomColors.primaryGreenSelectedColor : Colors.transparent,
           ),
           child: InkWell(
+            hoverColor: CustomColors.primaryGreenHoverColor,
             onTap: () {
               if (index + 1 == data.menu.length) {
                 serviceLocator<AuthCubit>().logout();
@@ -60,14 +77,14 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 7),
                   child: Icon(
                     data.menu[index].icon,
-                    color: isSelected ? Colors.black : Colors.grey,
+                    color: CustomColors.primaryWhiteColor,
                   ),
                 ),
                 Text(
                   data.menu[index].title,
                   style: TextStyle(
                     fontSize: 16,
-                    color: isSelected ? Colors.black : Colors.grey,
+                    color: CustomColors.primaryWhiteColor,
                     fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                   ),
                 )

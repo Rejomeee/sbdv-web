@@ -20,8 +20,7 @@ class NetworkFailure with _$NetworkFailure {
   const factory NetworkFailure.notFound({required String message}) = _NotFound;
 
   ///A failure representing 500 status code errors
-  const factory NetworkFailure.serverError({required String message}) =
-      _ServerError;
+  const factory NetworkFailure.serverError({required String message}) = _ServerError;
 
   ///A failure representing a successful call but returned an empty list when we expect results to have more than 0
   const factory NetworkFailure.emptyList() = _EmptyList;
@@ -33,8 +32,7 @@ class NetworkFailure with _$NetworkFailure {
   const factory NetworkFailure.expected() = _Expected;
 
   ///A failure that occurs for any uncaught errors that may occur.
-  const factory NetworkFailure.unexpected({required String message}) =
-      _Unexpected;
+  const factory NetworkFailure.unexpected({required String message}) = _Unexpected;
 
   ///A failure representing a successful call but channelUrl is null
   const factory NetworkFailure.channelNull() = _ChannelNull;
@@ -43,8 +41,7 @@ class NetworkFailure with _$NetworkFailure {
   const factory NetworkFailure.connectionTimeout() = _ConnectionTimeout;
 
   ///A failure that occurs for receive timeout.
-  const factory NetworkFailure.receiveTimeout({String? message}) =
-      _ReceiveTimeout;
+  const factory NetworkFailure.receiveTimeout({String? message}) = _ReceiveTimeout;
 
   /// A failure representing 406 status code errors.
   const factory NetworkFailure.notAcceptable() = _NotAcceptable;

@@ -7,6 +7,10 @@ class CustomColors {
   static const Color scaffoldBackgroundColorDarkMode = Color(0xFF1C1C1C);
 
   static const Color primaryGreenColor = Color.fromRGBO(0, 158, 96, 1);
+  static const Color primaryGreenHoverColor = Color.fromRGBO(0, 190, 115, 1);
+  static const Color primaryGreenSelectedColor = Color.fromRGBO(0, 120, 72, 1);
+
+  static const Color primaryWhiteBackgroundColor = Color(0xFFFDFDFD);
 
   ///Figma Primary Black color
   static const Color primaryBlackColor = Color.fromRGBO(0, 0, 0, 1);
