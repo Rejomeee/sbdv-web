@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../util/colors.dart';
 import '../util/styles.dart';
 
-// TODO ARONE: Fix Search Bar UI
 class CustomSearchBar extends StatefulWidget {
   final TextEditingController controller;
   final Function(String)? onTextChanged;
@@ -59,7 +58,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
       children: [
         Flexible(
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 26),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
               border: Border.all(color: _getFieldBorder()),
               color: widget.isEnabled ? CustomColors.primaryWhiteColor : CustomColors.grey2Color,
@@ -67,11 +66,12 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
             ),
             child: Row(
               children: [
-                SvgPicture.asset('assets/icons/search.svg'),
-                // const ThemedSvgIcon(
-                //   'assets/icons/search.svg',
-                // ),
-                const SizedBox(width: 18),
+                SvgPicture.asset(
+                  'assets/icons/search.svg',
+                  width: 20,
+                  height: 20,
+                ),
+                const SizedBox(width: 8),
                 Flexible(
                   child: TextFormField(
                     enabled: widget.isEnabled,
@@ -83,36 +83,42 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                     decoration: InputDecoration(
                       hintText: widget.hintText,
                       hintStyle: widget.hintStyle ?? Theme.of(context).defaultTheme.fontSize16?.semiBold,
-                      // fillColor: CustomColors.grey11Color,
                       border: Styles.transparentInputBorder(),
+                      fillColor: CustomColors.transparentColor,
+                      filled: true,
                       focusedBorder: Styles.transparentInputBorder(),
                       enabledBorder: Styles.transparentInputBorder(),
                       disabledBorder: Styles.transparentInputBorder(),
+                      hoverColor: CustomColors.transparentColor,
                       contentPadding: EdgeInsets.zero,
                     ),
                     onChanged: widget.onTextChanged,
                     onFieldSubmitted: widget.onSubmit,
                   ),
                 ),
+                if (clearButtonVisible) ...[
+                  const SizedBox(width: 8),
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    onPressed: () {
+                      widget.controller.clear();
+                      widget.onSubmit?.call('');
+                    },
+                    icon: SvgPicture.asset(
+                      'assets/icons/clear.svg',
+                      width: 20,
+                      height: 20,
+                    ),
+                    // icon: const ThemedSvgIcon(
+                    //   'assets/icons/clear.svg',
+                    // ),
+                  ),
+                ]
               ],
             ),
           ),
         ),
-        if (clearButtonVisible) ...[
-          const SizedBox(width: 16),
-          IconButton(
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
-            onPressed: () {
-              widget.controller.clear();
-              widget.onSubmit?.call('');
-            },
-            icon: SvgPicture.asset('assets/icons/clear.svg'),
-            // icon: const ThemedSvgIcon(
-            //   'assets/icons/clear.svg',
-            // ),
-          ),
-        ]
       ],
     );
   }

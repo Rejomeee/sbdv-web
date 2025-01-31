@@ -6,6 +6,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'di/injection.dart';
 import 'routes/side_menu_observer.dart';
+import 'screens/dashboard/screens/user/cubit/user_list/user_list_cubit.dart';
 import 'screens/login/cubit/auth/auth_cubit.dart';
 import 'util/styles.dart';
 
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider<AuthCubit>(
           create: (_) => serviceLocator<AuthCubit>(),
+        ),
+        Provider<UserListCubit>(
+          create: (_) => serviceLocator<UserListCubit>(),
         ),
       ],
       // child: MaterialApp(

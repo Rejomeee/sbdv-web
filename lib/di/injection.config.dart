@@ -17,7 +17,11 @@ import 'package:sbdv_web/repositories/auth/authentication_repository.dart'
     as _i1059;
 import 'package:sbdv_web/repositories/auth/authentication_rest_client.dart'
     as _i128;
+import 'package:sbdv_web/repositories/user/user_repository.dart' as _i489;
+import 'package:sbdv_web/repositories/user/user_rest_client.dart' as _i619;
 import 'package:sbdv_web/routes/sbdv_router.dart' as _i61;
+import 'package:sbdv_web/screens/dashboard/screens/user/cubit/user_list/user_list_cubit.dart'
+    as _i70;
 import 'package:sbdv_web/screens/login/cubit/auth/auth_cubit.dart' as _i469;
 
 const String _prod = 'prod';
@@ -50,8 +54,20 @@ extension GetItInjectableX on _i174.GetIt {
       () => externalPackageDependencies.authenticationRestClient,
       registerFor: {_prod},
     );
+    gh.lazySingleton<_i619.UserRestClient>(
+      () => externalPackageDependencies.userRestClient,
+      registerFor: {_prod},
+    );
     gh.lazySingleton<_i1059.AuthenticationRepository>(() =>
         _i1059.AuthenticationRepository(gh<_i128.AuthenticationRestClient>()));
+    gh.lazySingleton<_i489.IUserRepository>(
+      () => _i489.UserRepository(gh<_i619.UserRestClient>()),
+      registerFor: {_prod},
+    );
+    gh.factory<_i70.UserListCubit>(
+      () => _i70.UserListCubit(gh<_i489.IUserRepository>()),
+      registerFor: {_prod},
+    );
     gh.lazySingleton<_i469.AuthCubit>(
         () => _i469.AuthCubit(gh<_i1059.AuthenticationRepository>()));
     return this;
