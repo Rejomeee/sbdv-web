@@ -31,7 +31,7 @@ jobs:
           fi
 
       - name: Build Flutter Web
-        run: flutter build web --dart-define=BASE_URL=$BASE_URL
+        run: flutter build web --dart-define=baseUrl=$BASE_URL
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
