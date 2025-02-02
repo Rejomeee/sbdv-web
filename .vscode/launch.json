@@ -10,7 +10,8 @@
             "type": "dart",
             "toolArgs": [
                 "--dart-define",
-                "baseUrl=https://sbdvapi-dev.up.railway.app",
+                "baseUrl=http://localhost:5002",
+                // "baseUrl=https://sbdvapi-dev.up.railway.app",
             ]
         },
         {
