@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserListState {
   PaginationModel<UserModel> get userTable =>
       throw _privateConstructorUsedError;
-  UserSource<UserModel> get userSource => throw _privateConstructorUsedError;
+  UserSource get userSource => throw _privateConstructorUsedError;
 
   /// Create a copy of UserListState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,8 +33,7 @@ abstract class $UserListStateCopyWith<$Res> {
           UserListState value, $Res Function(UserListState) then) =
       _$UserListStateCopyWithImpl<$Res, UserListState>;
   @useResult
-  $Res call(
-      {PaginationModel<UserModel> userTable, UserSource<UserModel> userSource});
+  $Res call({PaginationModel<UserModel> userTable, UserSource userSource});
 }
 
 /// @nodoc
@@ -63,7 +62,7 @@ class _$UserListStateCopyWithImpl<$Res, $Val extends UserListState>
       userSource: null == userSource
           ? _value.userSource
           : userSource // ignore: cast_nullable_to_non_nullable
-              as UserSource<UserModel>,
+              as UserSource,
     ) as $Val);
   }
 }
@@ -76,8 +75,7 @@ abstract class _$$UserListStateImplCopyWith<$Res>
       __$$UserListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {PaginationModel<UserModel> userTable, UserSource<UserModel> userSource});
+  $Res call({PaginationModel<UserModel> userTable, UserSource userSource});
 }
 
 /// @nodoc
@@ -104,7 +102,7 @@ class __$$UserListStateImplCopyWithImpl<$Res>
       userSource: null == userSource
           ? _value.userSource
           : userSource // ignore: cast_nullable_to_non_nullable
-              as UserSource<UserModel>,
+              as UserSource,
     ));
   }
 }
@@ -118,7 +116,7 @@ class _$UserListStateImpl implements _UserListState {
   @override
   final PaginationModel<UserModel> userTable;
   @override
-  final UserSource<UserModel> userSource;
+  final UserSource userSource;
 
   @override
   String toString() {
@@ -151,12 +149,12 @@ class _$UserListStateImpl implements _UserListState {
 abstract class _UserListState implements UserListState {
   const factory _UserListState(
       {required final PaginationModel<UserModel> userTable,
-      required final UserSource<UserModel> userSource}) = _$UserListStateImpl;
+      required final UserSource userSource}) = _$UserListStateImpl;
 
   @override
   PaginationModel<UserModel> get userTable;
   @override
-  UserSource<UserModel> get userSource;
+  UserSource get userSource;
 
   /// Create a copy of UserListState
   /// with the given fields replaced by the non-null parameter values.

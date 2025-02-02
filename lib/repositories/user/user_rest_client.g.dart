@@ -22,9 +22,11 @@ class _UserRestClient implements UserRestClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<PaginationModel<UserModel>> getAllUsers() async {
+  Future<PaginationModel<UserModel>> getAllUsers(
+      PaginationModelRequest request) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(request.toJson());
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<PaginationModel<UserModel>>(Options(

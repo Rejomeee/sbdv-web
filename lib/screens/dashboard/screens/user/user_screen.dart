@@ -2,12 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rive/rive.dart';
 import 'package:sbdv_web/screens/dashboard/screens/user/model/user_model.dart';
 import 'package:sbdv_web/util/colors.dart';
+import 'package:sbdv_web/util/contants.dart';
 import 'package:sbdv_web/util/styles.dart';
 import 'package:sbdv_web/widgets/custom_text_button.dart';
 
-import '../../../../di/injection.dart';
 import '../../../../widgets/custom_search_bar.dart';
 import '../../widgets/dashboard_base.dart';
 import 'cubit/user_list/user_list_cubit.dart';
@@ -22,18 +23,15 @@ class UserScreen extends StatefulWidget {
 
 class _UserScreenState extends State<UserScreen> {
   TextEditingController _searchController = TextEditingController();
-  final usersSource = UserSource<UserModel>();
 
   @override
   void initState() {
-    // TODO: implement initState
+    context.read<UserListCubit>().init();
     super.initState();
-    serviceLocator<UserListCubit>().init();
   }
 
   @override
   void didChangeDependencies() {
-    print('heheeee');
     super.didChangeDependencies();
   }
 
@@ -43,7 +41,12 @@ class _UserScreenState extends State<UserScreen> {
     super.dispose();
   }
 
-  List<DataColumn> get _columns => UserModel.tableColumns.map((column) => DataColumn(label: Text(column))).toList();
+  List<DataColumn> get _columns => UserModel.tableColumns
+      .map((column) => DataColumn(label: Text(column)))
+      .toList();
+
+  List<String> filters = ['All', 'Admin', 'User'];
+  String selectedFilter = 'All';
 
   @override
   Widget build(BuildContext context) {
@@ -53,48 +56,106 @@ class _UserScreenState extends State<UserScreen> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       textStyle: TextStyle(fontSize: 16),
     );
-//TODO arone: fix userSource
+
     return DashboardBase(
       singleChildScrollViewEnable: false,
       child: Expanded(
         child: BlocBuilder<UserListCubit, UserListState>(
           builder: (context, state) {
-            // usersSource.data = state.userTable.data;
-            // print(state);
             return Column(
               children: [
                 headerSection(context, elevatedButtonStyle),
                 Expanded(
                   child: PaginatedDataTable2(
-                    empty: Text('empty'),
+                    empty: RiveAnimation.asset(
+                      'assets/animations/empty_table.riv',
+                    ),
                     columnSpacing: 16,
                     horizontalMargin: 8,
-                    headingRowColor: WidgetStateProperty.all(CustomColors.primaryGreenColor),
-                    headingTextStyle: Theme.of(context).defaultTheme.fontSize16?.bold.primaryWhiteColor,
-                    rowsPerPage: 10,
+                    headingRowColor:
+                        WidgetStateProperty.all(CustomColors.primaryGreenColor),
+                    headingTextStyle: Theme.of(context)
+                        .defaultTheme
+                        .fontSize16
+                        ?.bold
+                        .primaryWhiteColor,
+                    rowsPerPage: Constants.tableLimit,
                     minWidth: 800,
                     border: TableBorder.all(
                       color: CustomColors.shadowGray60Color,
                     ),
                     columns: _columns,
                     header: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
+                        Flexible(
                           flex: 4,
                           child: CustomSearchBar(
                             controller: _searchController,
                             hintText: 'Search',
+                            onSubmit:
+                                context.read<UserListCubit>().searchOnChange,
+                            onTextChanged:
+                                context.read<UserListCubit>().searchOnChange,
                           ),
                         ),
-                        Expanded(
+                        Flexible(
                           flex: 8,
-                          child: const SizedBox(),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.symmetric(vertical: 6),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 14, vertical: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton<String>(
+                                    value: selectedFilter,
+                                    dropdownColor: CustomColors.graySoftColor,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium
+                                        ?.copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color:
+                                                CustomColors.primaryBlackColor),
+                                    icon: Icon(Icons.arrow_drop_down,
+                                        color: CustomColors.primaryGreenColor),
+                                    items: filters.map((String filter) {
+                                      return DropdownMenuItem<String>(
+                                        value: filter,
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 8, horizontal: 12),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(6),
+                                          ),
+                                          child: Text(filter),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    onChanged: (String? newValue) {
+                                      print(newValue);
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                    source: usersSource,
+                    renderEmptyRowsInTheEnd: false,
+                    onPageChanged: (value) =>
+                        context.read<UserListCubit>().nextPage(value),
+                    source: state.userSource,
                     dataRowHeight: 80,
-                    dataTextStyle: Theme.of(context).defaultTheme.fontSize16?.bold,
+                    dataTextStyle:
+                        Theme.of(context).defaultTheme.fontSize16?.bold,
                   ),
                 ),
               ],
@@ -122,7 +183,9 @@ class _UserScreenState extends State<UserScreen> {
                 ),
                 RichText(
                   text: TextSpan(
-                    style: Theme.of(context).defaultTheme.fontSize16, // TODO: add colors
+                    style: Theme.of(context)
+                        .defaultTheme
+                        .fontSize16, // TODO: add colors
                     children: [
                       TextSpan(
                         text: 'You have ',
@@ -151,7 +214,11 @@ class _UserScreenState extends State<UserScreen> {
               onPressed: () {},
               child: Text(
                 'Add Resident',
-                style: Theme.of(context).defaultTheme.fontSize16?.bold.primaryWhiteColor,
+                style: Theme.of(context)
+                    .defaultTheme
+                    .fontSize16
+                    ?.bold
+                    .primaryWhiteColor,
               ),
             ),
           )

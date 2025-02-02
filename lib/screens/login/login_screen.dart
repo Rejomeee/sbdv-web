@@ -60,7 +60,8 @@ class _LoginScreenState extends State<LoginScreen> {
           Expanded(
             flex: 5,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: Responsive.isMobile(context) ? 16 : 64),
+              padding: EdgeInsets.symmetric(
+                  horizontal: Responsive.isMobile(context) ? 16 : 64),
               child: BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
                   if (state.state == AuthStates.success) {
@@ -75,8 +76,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Login',
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                            'I love you mislene hehehehe',
+                            style: TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 16),
                           if (state.error?.errorMessage != null)
@@ -93,7 +95,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             shouldShowValidation: state.shouldShowValidation,
                             hintText: 'Enter Username',
                             validatedField: state.validatedUsername,
-                            onTextChanged: serviceLocator<AuthCubit>().onUsernameChanged,
+                            onTextChanged:
+                                serviceLocator<AuthCubit>().onUsernameChanged,
                           ),
                           const SizedBox(height: 16),
                           CustomTextField(
@@ -102,7 +105,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             shouldShowValidation: state.shouldShowValidation,
                             hintText: 'Enter Password',
                             validatedField: state.validatedPassword,
-                            onTextChanged: serviceLocator<AuthCubit>().onPasswordChanged,
+                            onTextChanged:
+                                serviceLocator<AuthCubit>().onPasswordChanged,
                             textInputType: TextInputType.visiblePassword,
                           ),
                           const SizedBox(height: 16),
@@ -131,7 +135,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                       : FittedBox(
                                           child: Text(
                                             'Login',
-                                            style: Theme.of(context).defaultTheme.fontSize16?.bold.primaryWhiteColor,
+                                            style: Theme.of(context)
+                                                .defaultTheme
+                                                .fontSize16
+                                                ?.bold
+                                                .primaryWhiteColor,
                                           ),
                                         ),
                                 ),

@@ -7,7 +7,8 @@ import '../../network/result.dart';
 import 'user_rest_client.dart';
 
 abstract class IUserRepository {
-  Future<Result<PaginationModel<UserModel>>> getAllUsers();
+  Future<Result<PaginationModel<UserModel>>> getAllUsers(
+      PaginationModelRequest paginationRequest);
 }
 
 @LazySingleton(as: IUserRepository, env: [Environment.prod])
@@ -16,11 +17,12 @@ class UserRepository implements IUserRepository {
 
   UserRepository(this._restClient);
   @override
-  Future<Result<PaginationModel<UserModel>>> getAllUsers() async {
+  Future<Result<PaginationModel<UserModel>>> getAllUsers(
+      paginationRequest) async {
     final result = await RestClientCatcher.request<PaginationModel<UserModel>>(
       onRequest: () async {
         final response;
-        response = await _restClient.getAllUsers();
+        response = await _restClient.getAllUsers(paginationRequest);
         return Result.success(response);
       },
     );

@@ -20,9 +20,11 @@ class UserModel with _$UserModel {
     @JsonKey(name: 'updated_at') required DateTime updatedAt,
   }) = _UserModel;
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 
-  static List<String> get tableColumns => ['First Name', 'Last Name', 'Email', 'Username', 'Role'];
+  static List<String> get tableColumns =>
+      ['First Name', 'Last Name', 'Email', 'Username', 'Role'];
 
   factory UserModel.empty() => UserModel(
         id: '',
@@ -47,37 +49,34 @@ class UserModel with _$UserModel {
       );
 }
 
-class UserSource<T> extends DataTableSource {
-  List<T> data = [];
-  List<Widget> dataCellsBuilder = [];
-  List<DataCell> dataCells({bool hasButtonOnLast = false}) => dataCellsBuilder.asMap().entries.map((entry) {
-        int idx = entry.key;
-        Widget cell = entry.value;
-        bool isButton = hasButtonOnLast && idx == dataCellsBuilder.length - 1;
-        return DataCell(cellWidget(cell, isButton: isButton));
-      }).toList();
+class UserSource extends DataTableSource {
+  List<UserModel> data = [];
+  int totalCount = 0;
+
+  void refresh() => notifyListeners();
 
   @override
   DataRow2? getRow(int index) {
+    final user = data[index];
     return DataRow2.byIndex(
       index: index,
       cells: [
-        DataCell(cellWidget(Text('hehe'))),
-        DataCell(cellWidget(Text('hehe'))),
-        DataCell(cellWidget(Text('hehe'))),
-        DataCell(cellWidget(Text('hehe'))),
-        DataCell(cellWidget(Text('hehe')))
+        DataCell(cellWidget(Text(user.firstName))),
+        DataCell(cellWidget(Text(user.lastName))),
+        DataCell(cellWidget(Text(user.email))),
+        DataCell(cellWidget(Text(user.username))),
+        DataCell(cellWidget(Text(user.role.name), showButton: true)),
       ],
     );
   }
 
-  Widget cellWidget(Widget widget, {bool isButton = false}) {
+  Widget cellWidget(Widget widget, {bool showButton = false}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(child: SingleChildScrollView(child: widget)),
         Visibility(
-          visible: isButton,
+          visible: showButton,
           child: TextButton(
             onPressed: () {},
             child: Text('Button'),
@@ -91,7 +90,7 @@ class UserSource<T> extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => data.length;
+  int get rowCount => totalCount;
 
   @override
   int get selectedRowCount => 0;

@@ -10,6 +10,7 @@ class CustomColors {
   static const Color primaryGreenHoverColor = Color.fromRGBO(0, 190, 115, 1);
   static const Color primaryGreenSelectedColor = Color.fromRGBO(0, 120, 72, 1);
   static const Color shadowGray60Color = Color.fromRGBO(214, 214, 214, 0.60);
+  static const Color graySoftColor = Color.fromRGBO(245, 245, 245, 1);
 
   static const Color primaryWhiteBackgroundColor = Color(0xFFFDFDFD);
 

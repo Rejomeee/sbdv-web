@@ -13,5 +13,6 @@ abstract class UserRestClient {
   factory UserRestClient(Dio dio) = _UserRestClient;
 
   @GET(Endpoints.users)
-  Future<PaginationModel<UserModel>> getAllUsers();
+  Future<PaginationModel<UserModel>> getAllUsers(
+      @Queries() PaginationModelRequest request);
 }
