@@ -19,6 +19,8 @@ mixin _$UserListState {
   PaginationModel<UserModel> get userTable =>
       throw _privateConstructorUsedError;
   UserSource get userSource => throw _privateConstructorUsedError;
+  PaginatorController get paginatorController =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of UserListState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +35,10 @@ abstract class $UserListStateCopyWith<$Res> {
           UserListState value, $Res Function(UserListState) then) =
       _$UserListStateCopyWithImpl<$Res, UserListState>;
   @useResult
-  $Res call({PaginationModel<UserModel> userTable, UserSource userSource});
+  $Res call(
+      {PaginationModel<UserModel> userTable,
+      UserSource userSource,
+      PaginatorController paginatorController});
 }
 
 /// @nodoc
@@ -53,6 +58,7 @@ class _$UserListStateCopyWithImpl<$Res, $Val extends UserListState>
   $Res call({
     Object? userTable = null,
     Object? userSource = null,
+    Object? paginatorController = null,
   }) {
     return _then(_value.copyWith(
       userTable: null == userTable
@@ -63,6 +69,10 @@ class _$UserListStateCopyWithImpl<$Res, $Val extends UserListState>
           ? _value.userSource
           : userSource // ignore: cast_nullable_to_non_nullable
               as UserSource,
+      paginatorController: null == paginatorController
+          ? _value.paginatorController
+          : paginatorController // ignore: cast_nullable_to_non_nullable
+              as PaginatorController,
     ) as $Val);
   }
 }
@@ -75,7 +85,10 @@ abstract class _$$UserListStateImplCopyWith<$Res>
       __$$UserListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({PaginationModel<UserModel> userTable, UserSource userSource});
+  $Res call(
+      {PaginationModel<UserModel> userTable,
+      UserSource userSource,
+      PaginatorController paginatorController});
 }
 
 /// @nodoc
@@ -93,6 +106,7 @@ class __$$UserListStateImplCopyWithImpl<$Res>
   $Res call({
     Object? userTable = null,
     Object? userSource = null,
+    Object? paginatorController = null,
   }) {
     return _then(_$UserListStateImpl(
       userTable: null == userTable
@@ -103,6 +117,10 @@ class __$$UserListStateImplCopyWithImpl<$Res>
           ? _value.userSource
           : userSource // ignore: cast_nullable_to_non_nullable
               as UserSource,
+      paginatorController: null == paginatorController
+          ? _value.paginatorController
+          : paginatorController // ignore: cast_nullable_to_non_nullable
+              as PaginatorController,
     ));
   }
 }
@@ -111,16 +129,20 @@ class __$$UserListStateImplCopyWithImpl<$Res>
 
 class _$UserListStateImpl implements _UserListState {
   const _$UserListStateImpl(
-      {required this.userTable, required this.userSource});
+      {required this.userTable,
+      required this.userSource,
+      required this.paginatorController});
 
   @override
   final PaginationModel<UserModel> userTable;
   @override
   final UserSource userSource;
+  @override
+  final PaginatorController paginatorController;
 
   @override
   String toString() {
-    return 'UserListState(userTable: $userTable, userSource: $userSource)';
+    return 'UserListState(userTable: $userTable, userSource: $userSource, paginatorController: $paginatorController)';
   }
 
   @override
@@ -131,11 +153,14 @@ class _$UserListStateImpl implements _UserListState {
             (identical(other.userTable, userTable) ||
                 other.userTable == userTable) &&
             (identical(other.userSource, userSource) ||
-                other.userSource == userSource));
+                other.userSource == userSource) &&
+            (identical(other.paginatorController, paginatorController) ||
+                other.paginatorController == paginatorController));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userTable, userSource);
+  int get hashCode =>
+      Object.hash(runtimeType, userTable, userSource, paginatorController);
 
   /// Create a copy of UserListState
   /// with the given fields replaced by the non-null parameter values.
@@ -148,13 +173,17 @@ class _$UserListStateImpl implements _UserListState {
 
 abstract class _UserListState implements UserListState {
   const factory _UserListState(
-      {required final PaginationModel<UserModel> userTable,
-      required final UserSource userSource}) = _$UserListStateImpl;
+          {required final PaginationModel<UserModel> userTable,
+          required final UserSource userSource,
+          required final PaginatorController paginatorController}) =
+      _$UserListStateImpl;
 
   @override
   PaginationModel<UserModel> get userTable;
   @override
   UserSource get userSource;
+  @override
+  PaginatorController get paginatorController;
 
   /// Create a copy of UserListState
   /// with the given fields replaced by the non-null parameter values.

@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import '../network/dio_helper.dart';
 import '../repositories/auth/authentication_rest_client.dart';
+import '../repositories/initial/initial_rest_client.dart';
 import '../repositories/user/user_rest_client.dart';
 import '../routes/sbdv_router.dart';
 
@@ -29,4 +30,7 @@ abstract class ExternalPackageDependencies {
 
   @LazySingleton(env: [Environment.prod])
   UserRestClient get userRestClient => UserRestClient(dio);
+
+  @LazySingleton(env: [Environment.prod])
+  InitialRestClient get initialRestClient => InitialRestClient(dio);
 }

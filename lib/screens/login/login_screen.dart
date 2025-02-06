@@ -1,14 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:rive/rive.dart' as rive;
-import 'package:sbdv_web/util/styles.dart';
-import 'package:sbdv_web/widgets/custom_text_button.dart';
 
 import '../../di/injection.dart';
 import '../../routes/sbdv_router.dart';
 import '../../routes/sbdv_router.gr.dart';
 import '../../util/responsive.dart';
+import '../../util/styles.dart';
+import '../../widgets/custom_text_button.dart';
 import '../../widgets/custom_text_field.dart';
 import 'cubit/auth/auth_cubit.dart';
 
@@ -60,8 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Expanded(
             flex: 5,
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: Responsive.isMobile(context) ? 16 : 64),
+              padding: EdgeInsets.symmetric(horizontal: Responsive.isMobile(context) ? 16 : 64),
               child: BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
                   if (state.state == AuthStates.success) {
@@ -76,9 +75,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'I love you mislene hehehehe',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                            'Login',
+                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 16),
                           if (state.error?.errorMessage != null)
@@ -95,8 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             shouldShowValidation: state.shouldShowValidation,
                             hintText: 'Enter Username',
                             validatedField: state.validatedUsername,
-                            onTextChanged:
-                                serviceLocator<AuthCubit>().onUsernameChanged,
+                            onTextChanged: serviceLocator<AuthCubit>().onUsernameChanged,
                           ),
                           const SizedBox(height: 16),
                           CustomTextField(
@@ -105,8 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             shouldShowValidation: state.shouldShowValidation,
                             hintText: 'Enter Password',
                             validatedField: state.validatedPassword,
-                            onTextChanged:
-                                serviceLocator<AuthCubit>().onPasswordChanged,
+                            onTextChanged: serviceLocator<AuthCubit>().onPasswordChanged,
                             textInputType: TextInputType.visiblePassword,
                           ),
                           const SizedBox(height: 16),
@@ -135,11 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       : FittedBox(
                                           child: Text(
                                             'Login',
-                                            style: Theme.of(context)
-                                                .defaultTheme
-                                                .fontSize16
-                                                ?.bold
-                                                .primaryWhiteColor,
+                                            style: Theme.of(context).defaultTheme.fontSize16?.bold.primaryWhiteColor,
                                           ),
                                         ),
                                 ),

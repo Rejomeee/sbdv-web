@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
-import 'package:sbdv_web/repositories/auth/model/auth_token_model.dart';
 
 import '../../network/rest_client_catcher.dart';
 import '../../network/result.dart';
 import 'authentication_rest_client.dart';
+import 'model/auth_token_model.dart';
 
 @LazySingleton()
 class AuthenticationRepository {

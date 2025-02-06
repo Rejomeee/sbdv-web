@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_rest_client.dart';
+part of 'initial_rest_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'user_rest_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
-class _UserRestClient implements UserRestClient {
-  _UserRestClient(
+class _InitialRestClient implements InitialRestClient {
+  _InitialRestClient(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
@@ -22,24 +22,19 @@ class _UserRestClient implements UserRestClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<PaginationModel<UserModel>> getAllUsers(
-    PaginationModelRequest request, {
-    String? roleId,
-  }) async {
+  Future<List<RoleModel>> getRoles() async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'role': roleId};
-    queryParameters.addAll(request.toJson());
-    queryParameters.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<PaginationModel<UserModel>>(Options(
+    final _options = _setStreamType<List<RoleModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/api/users',
+          '/api/roles',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -48,13 +43,12 @@ class _UserRestClient implements UserRestClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late PaginationModel<UserModel> _value;
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<RoleModel> _value;
     try {
-      _value = PaginationModel<UserModel>.fromJson(
-        _result.data!,
-        (json) => UserModel.fromJson(json as Map<String, dynamic>),
-      );
+      _value = _result.data!
+          .map((dynamic i) => RoleModel.fromJson(i as Map<String, dynamic>))
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

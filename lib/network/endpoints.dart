@@ -4,4 +4,7 @@ class Endpoints {
 
   //* Users
   static const String users = "/api/users";
+
+  //* Roles
+  static const String roles = "/api/roles";
 }

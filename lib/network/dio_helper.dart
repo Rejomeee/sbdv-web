@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 import '../util/contants.dart';
 import 'error_interceptor.dart';
@@ -11,7 +10,7 @@ class DioHelper {
   static Dio createDioInstancecreateDioInstance() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: kDebugMode ? 'http://localhost:5002' : String.fromEnvironment(Constants.baseUrl),
+        baseUrl: const String.fromEnvironment(Constants.baseUrl),
         connectTimeout: Duration(milliseconds: 5000),
         receiveTimeout: Duration(milliseconds: 3000),
       ),

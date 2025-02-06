@@ -20,11 +20,9 @@ class UserModel with _$UserModel {
     @JsonKey(name: 'updated_at') required DateTime updatedAt,
   }) = _UserModel;
 
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
 
-  static List<String> get tableColumns =>
-      ['First Name', 'Last Name', 'Email', 'Username', 'Role'];
+  static List<String> get tableColumns => ['First Name', 'Last Name', 'Email', 'Username', 'Role'];
 
   factory UserModel.empty() => UserModel(
         id: '',

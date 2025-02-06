@@ -61,9 +61,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
               border: Border.all(color: _getFieldBorder()),
-              color: widget.isEnabled
-                  ? CustomColors.primaryWhiteColor
-                  : CustomColors.grey2Color,
+              color: widget.isEnabled ? CustomColors.primaryWhiteColor : CustomColors.grey2Color,
               borderRadius: BorderRadius.circular(16),
             ),
             child: Row(
@@ -84,8 +82,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                     style: Theme.of(context).defaultTheme.fontSize16?.semiBold,
                     decoration: InputDecoration(
                       hintText: widget.hintText,
-                      hintStyle: widget.hintStyle ??
-                          Theme.of(context).defaultTheme.fontSize16?.semiBold,
+                      hintStyle: widget.hintStyle ?? Theme.of(context).defaultTheme.fontSize16?.semiBold,
                       border: Styles.transparentInputBorder(),
                       fillColor: CustomColors.transparentColor,
                       filled: true,

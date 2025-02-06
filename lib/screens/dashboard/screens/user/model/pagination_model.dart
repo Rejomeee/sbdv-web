@@ -15,8 +15,7 @@ class PaginationModel<T> {
     required this.data,
   });
 
-  factory PaginationModel.fromJson(
-      Map<String, dynamic> json, T Function(dynamic) fromJsonT) {
+  factory PaginationModel.fromJson(Map<String, dynamic> json, T Function(dynamic) fromJsonT) {
     return PaginationModel(
       total: json['total'],
       page: json['page'],
