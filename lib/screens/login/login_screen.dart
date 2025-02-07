@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rive/rive.dart' as rive;
+import 'package:flutter/services.dart';
 
 import '../../di/injection.dart';
 import '../../routes/sbdv_router.dart';
@@ -27,13 +28,34 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
+    HardwareKeyboard.instance.addHandler((event) {
+      _handleKeyEvent(event);
+      return false; // or true, depending on your logic
+    });
   }
 
   @override
   void dispose() {
     _usernameController.dispose();
     _passwordController.dispose();
+    HardwareKeyboard.instance.removeHandler((event) {
+      _handleKeyEvent(event);
+      return false; // or true, depending on your logic
+    });
     super.dispose();
+  }
+
+  void _handleKeyEvent(KeyEvent event) {
+    if (event is KeyDownEvent && event.logicalKey == LogicalKeyboardKey.enter) {
+      _submit();
+    }
+  }
+
+  void _submit() {
+    serviceLocator<AuthCubit>().login(
+      _usernameController.text,
+      _passwordController.text,
+    );
   }
 
   @override
@@ -119,10 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   enabled: state.state != AuthStates.loading,
                                   style: CustomButtonStyle.blackMedium,
                                   onPressed: () {
-                                    serviceLocator<AuthCubit>().login(
-                                      _usernameController.text,
-                                      _passwordController.text,
-                                    );
+                                    _submit();
                                   },
                                   child: state.state == AuthStates.loading
                                       ? const rive.RiveAnimation.asset(
