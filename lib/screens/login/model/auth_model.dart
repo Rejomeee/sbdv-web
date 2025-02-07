@@ -10,7 +10,8 @@ class AuthModel with _$AuthModel {
     required String password,
   }) = _AuthModel;
 
-  factory AuthModel.fromJson(Map<String, dynamic> json) => _$AuthModelFromJson(json);
+  factory AuthModel.fromJson(Map<String, dynamic> json) =>
+      _$AuthModelFromJson(json);
 
   factory AuthModel.empty() => AuthModel(
         username: '',

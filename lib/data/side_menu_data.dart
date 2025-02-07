@@ -1,5 +1,6 @@
-import 'package:sbdv_web/model/menu_model.dart';
 import 'package:flutter/material.dart';
+
+import '../model/menu_model.dart';
 
 class SideMenuData {
   final menu = <MenuModel>[
@@ -22,6 +23,7 @@ class SideMenuData {
     MenuModel(
       icon: Icons.co_present_rounded,
       title: 'Roles',
+      adminAccessOnly: true,
     ),
     MenuModel(
       icon: Icons.receipt_long_sharp,

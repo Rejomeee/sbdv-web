@@ -11,6 +11,9 @@ AuthTokenModel _$AuthTokenModelFromJson(Map<String, dynamic> json) =>
       message: json['message'] as String,
       token: json['token'] as String?,
       error: json['error'] as String?,
+      data: json['data'] == null
+          ? null
+          : UserModel.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AuthTokenModelToJson(AuthTokenModel instance) =>
@@ -18,4 +21,5 @@ Map<String, dynamic> _$AuthTokenModelToJson(AuthTokenModel instance) =>
       'message': instance.message,
       'token': instance.token,
       'error': instance.error,
+      'data': instance.data,
     };

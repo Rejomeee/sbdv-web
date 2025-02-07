@@ -8,6 +8,7 @@ import 'package:sbdv_web/routes/sbdv_router.gr.dart';
 import '../../../../di/injection.dart';
 import '../../../../network/failures/app_failure.dart';
 import '../../../../repositories/auth/authentication_repository.dart';
+import '../../../../util/contants.dart';
 import '../../model/auth_model.dart';
 import '../../model/login_form_validated_field.dart';
 
@@ -55,8 +56,10 @@ class AuthCubit extends Cubit<AuthState> {
       // Simulate a login process
       final result = await _authenticationRepository.login(username, password);
       result.when(
-        success: (success) async {
-          await serviceLocator<FlutterSecureStorage>().write(key: 'auth_token', value: success.token);
+        success: (auth) async {
+          await serviceLocator<FlutterSecureStorage>()
+              .write(key: Constants.authToken, value: auth.token);
+          auth.data?.saveUserModel();
           isAuthenticated = true;
           emit(state.copyWith(state: AuthStates.success));
         },
@@ -83,12 +86,19 @@ class AuthCubit extends Cubit<AuthState> {
     final result = await _authenticationRepository.logout();
     result.when(
       success: (success) async {
-        await serviceLocator<FlutterSecureStorage>().delete(key: 'auth_token');
+        await serviceLocator<FlutterSecureStorage>()
+            .delete(key: Constants.authToken);
+        await serviceLocator<FlutterSecureStorage>()
+            .delete(key: Constants.user);
+
         isAuthenticated = false;
         emit(AuthState.initial());
       },
       failure: (failure) async {
-        await serviceLocator<FlutterSecureStorage>().delete(key: 'auth_token');
+        await serviceLocator<FlutterSecureStorage>()
+            .delete(key: Constants.authToken);
+        await serviceLocator<FlutterSecureStorage>()
+            .delete(key: Constants.user);
         emit(AuthState.initial());
       },
     );
@@ -99,17 +109,22 @@ class AuthCubit extends Cubit<AuthState> {
     final result = await _authenticationRepository.checkAuth();
     result.when(
       success: (success) async {
-        await serviceLocator<FlutterSecureStorage>().write(key: 'auth_token', value: success.token);
+        await serviceLocator<FlutterSecureStorage>()
+            .write(key: Constants.authToken, value: success.token);
         isAuthenticated = true;
         // emit(AuthSuccess());
       },
       failure: (failure) async {
         isAuthenticated = false;
-        await serviceLocator<FlutterSecureStorage>().delete(key: 'auth_token');
+        await serviceLocator<FlutterSecureStorage>()
+            .delete(key: Constants.authToken);
+        await serviceLocator<FlutterSecureStorage>()
+            .delete(key: Constants.user);
         // emit(AuthLogout());
       },
     );
   }
 
-  bool get _isDataValid => state.validatedUsername.isValid() && state.validatedPassword.isValid();
+  bool get _isDataValid =>
+      state.validatedUsername.isValid() && state.validatedPassword.isValid();
 }

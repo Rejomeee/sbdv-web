@@ -7,6 +7,8 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../di/injection.dart';
 import '../../../../repositories/initial/initial_repository.dart';
+import '../../../../util/contants.dart';
+import '../../../../services/user_service.dart';
 
 part 'initial_cubit.freezed.dart';
 part 'initial_state.dart';
@@ -21,16 +23,22 @@ class InitialCubit extends Cubit<InitialState> {
 
     ///Do something
     checkRoleExist();
+
+    final user = await serviceLocator<UserService>().getUserDetails();
+    //* Todo arone: filter per subdivision on user table and role filter is dependent on the logged in user role (admin only)
+    print(user?.toJson());
   }
 
   Future<void> checkRoleExist() async {
-    final rolesExist = await serviceLocator<FlutterSecureStorage>().read(key: 'roles');
+    final rolesExist =
+        await serviceLocator<FlutterSecureStorage>().read(key: Constants.roles);
     if (rolesExist == null) {
       final roles = await _repository.getRoles();
       roles.when(
         success: (roles) async {
           final rolesJson = jsonEncode(roles);
-          await serviceLocator<FlutterSecureStorage>().write(key: 'roles', value: rolesJson);
+          await serviceLocator<FlutterSecureStorage>()
+              .write(key: Constants.roles, value: rolesJson);
         },
         failure: (failure) {
           print(failure);

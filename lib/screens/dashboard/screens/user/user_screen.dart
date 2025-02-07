@@ -34,7 +34,8 @@ class _UserScreenState extends State<UserScreen> {
   }
 
   Future<List<RoleModel>> getRoles() async {
-    final roles = await serviceLocator<FlutterSecureStorage>().read(key: 'roles');
+    final roles =
+        await serviceLocator<FlutterSecureStorage>().read(key: Constants.roles);
     if (roles != null) {
       final rolesModel = RoleModel.modelListFromJson(roles);
       return [RoleModel.all(), ...rolesModel.map((e) => e).toList()];
@@ -53,7 +54,9 @@ class _UserScreenState extends State<UserScreen> {
     super.dispose();
   }
 
-  List<DataColumn> get _columns => UserModel.tableColumns.map((column) => DataColumn(label: Text(column))).toList();
+  List<DataColumn> get _columns => UserModel.tableColumns
+      .map((column) => DataColumn(label: Text(column)))
+      .toList();
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +83,13 @@ class _UserScreenState extends State<UserScreen> {
                     controller: state.paginatorController,
                     columnSpacing: 16,
                     horizontalMargin: 8,
-                    headingRowColor: WidgetStateProperty.all(CustomColors.primaryGreenColor),
-                    headingTextStyle: Theme.of(context).defaultTheme.fontSize16?.bold.primaryWhiteColor,
+                    headingRowColor:
+                        WidgetStateProperty.all(CustomColors.primaryGreenColor),
+                    headingTextStyle: Theme.of(context)
+                        .defaultTheme
+                        .fontSize16
+                        ?.bold
+                        .primaryWhiteColor,
                     rowsPerPage: Constants.tableLimit,
                     minWidth: 800,
                     border: TableBorder.all(
@@ -96,8 +104,10 @@ class _UserScreenState extends State<UserScreen> {
                           child: CustomSearchBar(
                             controller: _searchController,
                             hintText: 'Search',
-                            onSubmit: context.read<UserListCubit>().searchOnChange,
-                            onTextChanged: context.read<UserListCubit>().searchOnChange,
+                            onSubmit:
+                                context.read<UserListCubit>().searchOnChange,
+                            onTextChanged:
+                                context.read<UserListCubit>().searchOnChange,
                           ),
                         ),
                         Flexible(
@@ -112,10 +122,12 @@ class _UserScreenState extends State<UserScreen> {
                       ],
                     ),
                     renderEmptyRowsInTheEnd: false,
-                    onPageChanged: (value) => context.read<UserListCubit>().nextPage(value),
+                    onPageChanged: (value) =>
+                        context.read<UserListCubit>().nextPage(value),
                     source: state.userSource,
                     dataRowHeight: 80,
-                    dataTextStyle: Theme.of(context).defaultTheme.fontSize16?.bold,
+                    dataTextStyle:
+                        Theme.of(context).defaultTheme.fontSize16?.bold,
                   ),
                 ),
               ],
@@ -145,17 +157,18 @@ class _UserScreenState extends State<UserScreen> {
               child: DropdownButton<RoleModel>(
                   value: context.read<UserListCubit>().role ?? RoleModel.all(),
                   dropdownColor: CustomColors.graySoftColor,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(fontWeight: FontWeight.bold, color: CustomColors.primaryBlackColor),
-                  icon: Icon(Icons.arrow_drop_down, color: CustomColors.primaryGreenColor),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: CustomColors.primaryBlackColor),
+                  icon: Icon(Icons.arrow_drop_down,
+                      color: CustomColors.primaryGreenColor),
                   onChanged: context.read<UserListCubit>().filterByRole,
                   items: snapshot.data?.map((RoleModel role) {
                     return DropdownMenuItem<RoleModel>(
                       value: role,
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6),
                         ),
@@ -193,7 +206,12 @@ class _UserScreenState extends State<UserScreen> {
                         text: 'You have ',
                       ),
                       TextSpan(
-                        text: context.read<UserListCubit>().state.userTable.total.toString(),
+                        text: context
+                            .read<UserListCubit>()
+                            .state
+                            .userTable
+                            .total
+                            .toString(),
                         style: Theme.of(context).defaultTheme.fontSize16?.bold,
                       ),
                       TextSpan(
@@ -216,7 +234,11 @@ class _UserScreenState extends State<UserScreen> {
               onPressed: () {},
               child: Text(
                 'Add Resident',
-                style: Theme.of(context).defaultTheme.fontSize16?.bold.primaryWhiteColor,
+                style: Theme.of(context)
+                    .defaultTheme
+                    .fontSize16
+                    ?.bold
+                    .primaryWhiteColor,
               ),
             ),
           )

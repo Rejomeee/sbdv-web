@@ -4,6 +4,8 @@ import 'package:sbdv_web/di/injection.dart';
 import 'package:sbdv_web/routes/routes.dart';
 import 'package:sbdv_web/routes/sbdv_router.gr.dart';
 
+import '../util/contants.dart';
+
 @AutoRouterConfig(replaceInRouteName: 'Screen|Page,Route')
 class SBDVRouter extends RootStackRouter {
   @override
@@ -11,7 +13,9 @@ class SBDVRouter extends RootStackRouter {
     AutoRouteGuard.simple(
       (resolver, router) {
         // Read the auth token from secure storage
-        serviceLocator<FlutterSecureStorage>().read(key: 'auth_token').then((token) {
+        serviceLocator<FlutterSecureStorage>()
+            .read(key: Constants.authToken)
+            .then((token) {
           final bool isAuthenticated = token != null;
           if (isAuthenticated) {
             // If authenticated and trying to access the login route, redirect to dashboard

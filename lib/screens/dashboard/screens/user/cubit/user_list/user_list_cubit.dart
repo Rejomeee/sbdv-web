@@ -26,10 +26,11 @@ class UserListCubit extends Cubit<UserListState> {
     if (paginationRequest.page == state.userTable.totalPages) {
       return;
     }
-    int itemsPerPage = paginationRequest.limit;
-    if (value >= (itemsPerPage / 2).floor() && state.userSource.data.length < state.userSource.totalCount) {
+    int itemsPerPage = state.userSource.data.length;
+    if (value >= (itemsPerPage / 2).floor() &&
+        state.userSource.data.length < state.userSource.totalCount) {
       paginationRequest.page++;
-      await reqGetAllUsers();
+      await reqGetAllUsers(addToList: true);
     }
   }
 

@@ -28,6 +28,7 @@ import 'package:sbdv_web/screens/dashboard/cubit/initial/initial_cubit.dart'
 import 'package:sbdv_web/screens/dashboard/screens/user/cubit/user_list/user_list_cubit.dart'
     as _i70;
 import 'package:sbdv_web/screens/login/cubit/auth/auth_cubit.dart' as _i469;
+import 'package:sbdv_web/services/user_service.dart' as _i313;
 
 const String _prod = 'prod';
 
@@ -53,6 +54,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => externalPackageDependencies.secureStorage,
+      registerFor: {_prod},
+    );
+    gh.lazySingleton<_i313.UserService>(
+      () => externalPackageDependencies.userService,
       registerFor: {_prod},
     );
     gh.lazySingleton<_i128.AuthenticationRestClient>(
