@@ -216,7 +216,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserModelImpl implements _UserModel {
+class _$UserModelImpl extends _UserModel {
   _$UserModelImpl(
       {@JsonKey(name: '_id') required this.id,
       @JsonKey(name: 'first_name') required this.firstName,
@@ -225,7 +225,8 @@ class _$UserModelImpl implements _UserModel {
       required this.email,
       required this.role,
       @JsonKey(name: 'created_at') required this.createdAt,
-      @JsonKey(name: 'updated_at') required this.updatedAt});
+      @JsonKey(name: 'updated_at') required this.updatedAt})
+      : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -298,7 +299,7 @@ class _$UserModelImpl implements _UserModel {
   }
 }
 
-abstract class _UserModel implements UserModel {
+abstract class _UserModel extends UserModel {
   factory _UserModel(
           {@JsonKey(name: '_id') required final String id,
           @JsonKey(name: 'first_name') required final String firstName,
@@ -309,6 +310,7 @@ abstract class _UserModel implements UserModel {
           @JsonKey(name: 'created_at') required final DateTime createdAt,
           @JsonKey(name: 'updated_at') required final DateTime updatedAt}) =
       _$UserModelImpl;
+  _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;

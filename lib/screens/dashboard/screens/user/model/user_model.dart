@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../../di/injection.dart';
+import '../../../../../util/contants.dart';
 import 'role_model.dart';
 
 part 'user_model.freezed.dart';
@@ -9,6 +14,7 @@ part 'user_model.g.dart';
 
 @freezed
 class UserModel with _$UserModel {
+  UserModel._();
   factory UserModel({
     @JsonKey(name: '_id') required String id,
     @JsonKey(name: 'first_name') required String firstName,
@@ -22,6 +28,13 @@ class UserModel with _$UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
+
+  void saveUserModel() async {
+    final userJson = jsonEncode(this);
+    await serviceLocator<FlutterSecureStorage>()
+        .write(key: Constants.user, value: userJson);
+    print('arone User saved ${userJson}');
+  }
 
   static List<String> get tableColumns =>
       ['First Name', 'Last Name', 'Email', 'Username', 'Role'];

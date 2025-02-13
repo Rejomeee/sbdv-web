@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
+import 'package:sbdv_web/services/user_service.dart';
 
 import '../network/dio_helper.dart';
 import '../repositories/auth/authentication_rest_client.dart';
+import '../repositories/initial/initial_rest_client.dart';
 import '../repositories/user/user_rest_client.dart';
 import '../routes/sbdv_router.dart';
 
@@ -22,11 +24,18 @@ abstract class ExternalPackageDependencies {
   @LazySingleton(env: [Environment.prod])
   FlutterSecureStorage get secureStorage => FlutterSecureStorage();
 
+  @LazySingleton(env: [Environment.prod])
+  UserService get userService => UserService();
+
   //* Rest Clients
 
   @LazySingleton(env: [Environment.prod])
-  AuthenticationRestClient get authenticationRestClient => AuthenticationRestClient(dio);
+  AuthenticationRestClient get authenticationRestClient =>
+      AuthenticationRestClient(dio);
 
   @LazySingleton(env: [Environment.prod])
   UserRestClient get userRestClient => UserRestClient(dio);
+
+  @LazySingleton(env: [Environment.prod])
+  InitialRestClient get initialRestClient => InitialRestClient(dio);
 }

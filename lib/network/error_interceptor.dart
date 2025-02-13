@@ -1,5 +1,8 @@
 // coverage:ignore-file
 import 'package:dio/dio.dart';
+import 'package:sbdv_web/di/injection.dart';
+import 'package:sbdv_web/screens/login/cubit/auth/auth_cubit.dart';
+
 import 'dio_error_model.dart';
 import 'error_response.dart';
 import 'failures/network_failure.dart';
@@ -107,6 +110,7 @@ class ErrorInterceptor extends Interceptor {
     _rejectRequest(
       failure: NetworkFailure.unauthorized(),
     );
+    serviceLocator<AuthCubit>().logout();
   }
 
   void handle404Response({required ErrorResponse errorResponseData}) => _rejectRequest(

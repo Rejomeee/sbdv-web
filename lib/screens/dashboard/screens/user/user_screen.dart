@@ -2,16 +2,19 @@ import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:rive/rive.dart';
-import 'package:sbdv_web/screens/dashboard/screens/user/model/user_model.dart';
-import 'package:sbdv_web/util/colors.dart';
-import 'package:sbdv_web/util/contants.dart';
-import 'package:sbdv_web/util/styles.dart';
-import 'package:sbdv_web/widgets/custom_text_button.dart';
 
+import '../../../../di/injection.dart';
+import '../../../../util/colors.dart';
+import '../../../../util/contants.dart';
+import '../../../../util/styles.dart';
 import '../../../../widgets/custom_search_bar.dart';
+import '../../../../widgets/custom_text_button.dart';
 import '../../widgets/dashboard_base.dart';
 import 'cubit/user_list/user_list_cubit.dart';
+import 'model/role_model.dart';
+import 'model/user_model.dart';
 
 @RoutePage()
 class UserScreen extends StatefulWidget {
@@ -26,8 +29,18 @@ class _UserScreenState extends State<UserScreen> {
 
   @override
   void initState() {
-    context.read<UserListCubit>().init();
     super.initState();
+    context.read<UserListCubit>().init();
+  }
+
+  Future<List<RoleModel>> getRoles() async {
+    final roles =
+        await serviceLocator<FlutterSecureStorage>().read(key: Constants.roles);
+    if (roles != null) {
+      final rolesModel = RoleModel.modelListFromJson(roles);
+      return [RoleModel.all(), ...rolesModel.map((e) => e).toList()];
+    }
+    return [];
   }
 
   @override
@@ -44,9 +57,6 @@ class _UserScreenState extends State<UserScreen> {
   List<DataColumn> get _columns => UserModel.tableColumns
       .map((column) => DataColumn(label: Text(column)))
       .toList();
-
-  List<String> filters = ['All', 'Admin', 'User'];
-  String selectedFilter = 'All';
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +80,7 @@ class _UserScreenState extends State<UserScreen> {
                     empty: RiveAnimation.asset(
                       'assets/animations/empty_table.riv',
                     ),
+                    controller: state.paginatorController,
                     columnSpacing: 16,
                     horizontalMargin: 8,
                     headingRowColor:
@@ -104,46 +115,7 @@ class _UserScreenState extends State<UserScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Container(
-                                margin: const EdgeInsets.symmetric(vertical: 6),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 14, vertical: 10),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: DropdownButtonHideUnderline(
-                                  child: DropdownButton<String>(
-                                    value: selectedFilter,
-                                    dropdownColor: CustomColors.graySoftColor,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium
-                                        ?.copyWith(
-                                            fontWeight: FontWeight.bold,
-                                            color:
-                                                CustomColors.primaryBlackColor),
-                                    icon: Icon(Icons.arrow_drop_down,
-                                        color: CustomColors.primaryGreenColor),
-                                    items: filters.map((String filter) {
-                                      return DropdownMenuItem<String>(
-                                        value: filter,
-                                        child: Container(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 8, horizontal: 12),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(6),
-                                          ),
-                                          child: Text(filter),
-                                        ),
-                                      );
-                                    }).toList(),
-                                    onChanged: (String? newValue) {
-                                      print(newValue);
-                                    },
-                                  ),
-                                ),
-                              ),
+                              _dropdownBuild(),
                             ],
                           ),
                         ),
@@ -166,6 +138,51 @@ class _UserScreenState extends State<UserScreen> {
     );
   }
 
+  FutureBuilder<List<RoleModel>> _dropdownBuild() {
+    return FutureBuilder<List<RoleModel>>(
+      future: getRoles(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else {
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton<RoleModel>(
+                  value: context.read<UserListCubit>().role ?? RoleModel.all(),
+                  dropdownColor: CustomColors.graySoftColor,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: CustomColors.primaryBlackColor),
+                  icon: Icon(Icons.arrow_drop_down,
+                      color: CustomColors.primaryGreenColor),
+                  onChanged: context.read<UserListCubit>().filterByRole,
+                  items: snapshot.data?.map((RoleModel role) {
+                    return DropdownMenuItem<RoleModel>(
+                      value: role,
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(role.name),
+                      ),
+                    );
+                  }).toList()),
+            ),
+          );
+        }
+      },
+    );
+  }
+
   Widget headerSection(BuildContext context, ButtonStyle elevatedButtonStyle) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 38),
@@ -183,15 +200,18 @@ class _UserScreenState extends State<UserScreen> {
                 ),
                 RichText(
                   text: TextSpan(
-                    style: Theme.of(context)
-                        .defaultTheme
-                        .fontSize16, // TODO: add colors
+                    style: Theme.of(context).defaultTheme.fontSize16,
                     children: [
                       TextSpan(
                         text: 'You have ',
                       ),
                       TextSpan(
-                        text: '100',
+                        text: context
+                            .read<UserListCubit>()
+                            .state
+                            .userTable
+                            .total
+                            .toString(),
                         style: Theme.of(context).defaultTheme.fontSize16?.bold,
                       ),
                       TextSpan(

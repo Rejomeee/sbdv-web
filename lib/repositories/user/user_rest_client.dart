@@ -9,10 +9,11 @@ part 'user_rest_client.g.dart';
 
 @RestApi()
 abstract class UserRestClient {
-  ///Constructor that accepts an instance of [Dio].
   factory UserRestClient(Dio dio) = _UserRestClient;
 
   @GET(Endpoints.users)
   Future<PaginationModel<UserModel>> getAllUsers(
-      @Queries() PaginationModelRequest request);
+    @Queries() PaginationModelRequest request, {
+    @Query('role') String? roleId,
+  });
 }
